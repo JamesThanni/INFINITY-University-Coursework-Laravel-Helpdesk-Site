@@ -8,6 +8,30 @@
     <title>Employee Dashboard</title>
     <style>
 
+     /* https://codepen.io/GhostRider/pen/GHaFw */
+
+    .scroll {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    .scroll::-webkit-scrollbar-track
+    {
+        border: 1px solid #161616;
+        background-color: #F5F5F5;
+    }
+
+    .scroll::-webkit-scrollbar
+    {
+        width: 10px;
+        background-color: #F5F5F5;
+    }
+
+    .scroll::-webkit-scrollbar-thumb
+    {
+        background-color:  #03fcb1;	
+    }
+
     /* blue: 4CECFF
     black: 161616
     grey: 1C1C1C */
@@ -128,17 +152,25 @@
         grid-area: main-content;
         padding: 0 3vw 0 0;
         flex-direction: column;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 
     .content-row {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-bottom: 1em;
+        margin-bottom: 2em;
+        align-items: center;
+    }
+
+    .content-row h1 {
+        font-size: 3.5em;
     }
 
     .top-row h2 {
         text-transform: uppercase;
+        font-weight: bold;
     }
 
     .content-row .stat-box {
@@ -227,6 +259,28 @@
             grid-template-rows: 1fr 1fr 6fr;
             grid-template-columns: 1fr;
         }
+
+        #top-nav {
+            margin: 2em;
+        }
+
+        #side-nav {
+            flex-direction: row;
+            justify-content: space-between;
+            background: #1c1c1c;
+            padding: 0 3vw;
+            margin-bottom: 2em;
+        }
+
+        #side-nav .side-nav-item {
+            margin: 0;
+            align-items: center;
+            padding: 1em;
+        }
+
+        #main-content {
+            padding: 0 2vw;
+        }
     }
 
     </style>
@@ -266,8 +320,10 @@
                 <h3>Dummy Option</h3>
             </div>
         </nav>
-        <div id="main-content">
+        <div id="main-content" class="scroll">
             <div class="content-row">
+
+                <h1>Employee Dashboard</h1>
 
                 <div class="stat-box">
                     <p>Calls made:</p>
@@ -355,7 +411,17 @@
                 </div>
 
             </div>
-            
+
+            <div class="content-row">
+                <div class="content-box">
+                    <div class="top-row">
+                        <h2>Call Logs</h2>
+                    </div>
+                    <div class="content-box-row">
+                    
+                    </div>
+                </div>
+            </div>
         
         </div>
     </div>
