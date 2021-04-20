@@ -323,7 +323,7 @@
         <div id="main-content" class="scroll">
             <div class="content-row">
 
-                <h1>Employee Dashboard</h1>
+                <h1>Big Chungus</h1>
 
                 <div class="stat-box">
                     <p>Calls made:</p>
