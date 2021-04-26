@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\AnalystController;
+use App\Http\Controllers\SpecialistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('employee_view_tickets');
-});
+Route::get('/', [MainController::class, 'index']);
+Route::get('/login', [MainController::class, 'index']);
+
+Route::get('/employee-dashboard', [EmployeeController::class, 'index']);
+Route::get('/employee-FAQ', [EmployeeController::class, 'loadFAQPage']);
+Route::get('/employee-tickets', [EmployeeController::class, 'loadTicketsPage']);
+
+Route::get('/analyst-dashboard', [AnalystController::class, 'index']);
+
+Route::get('/specialist-dashboard', [SpecialistController::class, 'index']);
+Route::get('/specialist-FAQ', [SpecialistController::class, 'loadFAQPage']);
+
