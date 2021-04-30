@@ -20,12 +20,17 @@ use App\Http\Controllers\SpecialistController;
 Route::get('/', [MainController::class, 'index']);
 Route::get('/login', [MainController::class, 'index']);
 
-Route::get('/employee-dashboard', [EmployeeController::class, 'index']);
-Route::get('/employee-FAQ', [EmployeeController::class, 'loadFAQPage']);
-Route::get('/employee-tickets', [EmployeeController::class, 'loadTicketsPage']);
+Route::get('/employee', [EmployeeController::class, 'index']);
+Route::get('/employee/dashboard', [EmployeeController::class, 'index']);
+Route::get('/employee/FAQ', [EmployeeController::class, 'loadFAQPage']);
+Route::get('/employee/tickets', [EmployeeController::class, 'loadTicketsPage']);
 
-Route::get('/analyst-dashboard', [AnalystController::class, 'index']);
+Route::get('/analyst', [AnalystController::class, 'index']);
+Route::get('/analyst/dashboard', [AnalystController::class, 'index']);
 
-Route::get('/specialist-dashboard', [SpecialistController::class, 'index']);
-Route::get('/specialist-FAQ', [SpecialistController::class, 'loadFAQPage']);
+Route::get('/specialist', [SpecialistController::class, 'index']);
+Route::get('/specialist/dashboard', [SpecialistController::class, 'index']);
+Route::get('/specialist/FAQ', [SpecialistController::class, 'loadFAQPage']);
+Route::get('/specialist/edit', [SpecialistController::class, 'loadEditPage']);
+Route::post('/specialist/edit/add-hardware', [SpecialistController::class, 'addHardware']);
 

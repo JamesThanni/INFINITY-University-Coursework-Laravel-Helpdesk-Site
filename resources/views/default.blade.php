@@ -214,6 +214,7 @@
         padding: 2em;
         flex-direction: column;
         width: 100%;
+        margin: .25em;
     }
 
     .content-box .top-row {
@@ -295,6 +296,10 @@
 
         #main-content {
             padding: 0 2vw;
+        }
+
+        .content-row {
+            flex-direction: column;
         }
     }
 

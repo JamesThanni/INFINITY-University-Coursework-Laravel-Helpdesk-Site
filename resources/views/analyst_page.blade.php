@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="right">
-            <a href="{{ url('analyst-dashboard') }}"><h3 class="nav-item">Dashboard</h3></a>
+            <a href="{{ url('analyst/dashboard') }}"><h3 class="nav-item">Dashboard</h3></a>
             <a href="{{ url('login') }}"><h3 class="nav-item fancy-nav-item">Log Out</h3></a>
         </div>
     </nav>
