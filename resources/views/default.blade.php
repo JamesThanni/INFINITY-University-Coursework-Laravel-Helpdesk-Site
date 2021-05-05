@@ -86,6 +86,10 @@
         background: #161616;
     }
 
+    .no-style {
+        all: unset;
+    }
+
     .wrapper {
         display: grid;
         grid-template-areas:
@@ -160,6 +164,26 @@
         color: #03fcb1;
     }
 
+    .turquoise {
+        color: #03fcb1 !important;
+    }
+
+    .green {
+        color: #74FB56 !important;
+    }
+
+    .red {
+        color: #F50000 !important;
+    }
+
+    .blue {
+        color: #03DBDA !important;
+    }
+
+    .yellow {
+        color: #FFD800 !important;
+    }
+
     .side-nav-item h3 {
         font-size: 16px;
     }
@@ -215,6 +239,7 @@
         flex-direction: column;
         width: 100%;
         margin: .25em;
+        min-height: 400px;
     }
 
     .content-box .top-row {
@@ -265,6 +290,79 @@
         margin-bottom: .5em;
     }
 
+    .table {
+        width: 100%;
+        overflow-y: scroll;
+        max-height: 600px;
+        border-collapse: collapse;
+        cursor: pointer;
+    }
+
+    .hardware-table {
+        max-height: 250px !important;
+    }
+
+    .table, .table tbody, .table thead {
+        display: block;
+    }
+
+    .table tr {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 .5em;
+    }
+
+    .table tbody tr:nth-child(odd) {
+        background: #161616;
+    }
+
+    .table td {
+        padding: 20px 0; 
+        width: 100%;
+        font-size: 12px;
+        opacity: .75;
+    }
+
+    .table td i {
+        margin-right: 1em;
+        font-size: 20px;
+    }
+
+    .table td:first-child {
+        padding: 20px 0;
+    }
+
+    .table th {
+        text-align: left;
+        text-transform: uppercase;
+        font-weight: 100;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .login-box-container {
+        width: 50vw;
+        height: 50vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        background:#252525;
+        position: absolute;
+        left: 50%; top: 50%; transform: translate(-50%, -50%);
+        padding: 1em;
+    }
+
+    .links {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .links > * {
+        margin-left: 1em;
+    }
+
+    
     @media (max-width: 1200px) {
         .wrapper {
             grid-template-areas:
@@ -308,6 +406,33 @@
 <body>
     
     @yield('page-content')
+
+    <script>
+        // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_table
+        function searchTable(e, index, table, input) {
+            var filter, tr, td, i, txtValue;
+            filter = input.value.toUpperCase();
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[index];
+                if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+                }       
+            }
+        }
+
+        function searchHardwareTable(e, index) {
+            var input = e.target;
+            var table = input.parentNode.parentNode.nextElementSibling.children[0];
+            searchTable(e, index, table, input);
+        }
+        
+    </script>
 
 </body>
 </html>

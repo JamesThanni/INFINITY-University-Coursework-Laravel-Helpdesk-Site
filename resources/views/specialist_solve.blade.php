@@ -1,36 +1,33 @@
 
-        @extends('employee_page')
+        @extends('specialist_page')
 
-        @section('employee-page-content')
+        @section('specialist-page-content')
             
-        <nav id="side-nav">
+        {{-- <nav id="side-nav">
             <div class="side-nav-item">
-                <i class="fa fa-plus-square green"></i>
-                <h3>Clear</h3>
+                <i class="fa fa-list"></i>
+                <h3>Option 1</h3>
             </div>
-        </nav>
+            <div class="side-nav-item">
+                <i class="fa fa-list"></i>
+                <h3>Option 2</h3>
+            </div>
+            <div class="side-nav-item">
+                <i class="fa fa-list"></i>
+                <h3>Option 3</h3>
+            </div>
+            <div class="side-nav-item">
+                <i class="fa fa-list"></i>
+                <h3>Option 4</h3>
+            </div>
+        </nav> --}}
         <div id="main-content" class="scroll">
             <div class="content-row">
 
-                <h1>DASHBOARD</h1>
-
-            </div>
-
-            <div class="content-row">
                 <div class="content-box">
                     <div class="top-row">
-                        <h2>FAQ</h2>
-                        <input placeholder="search FAQ" type="text" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="content-row">
-
-                <div class="content-box">
-                    <div class="top-row">
-                        <h2>New Ticket</h2>
-                        <button>Submit ticket</button>
+                        <h2>Solution to ticket #101</h2>
+                        <h4 class="turquoise">Windows wont boot after installing Intel HD graphics Drivers</h4>
                     </div>
 
                     <div class="content-box-row">
@@ -39,19 +36,15 @@
                     <div class="content-box-row">
                         <form class="content-form" action="">
                             <div class="form-row">
-                                <div class="form-input date-input">
-                                    {{-- <label>Date of problem</label> --}}
-                                    <input type="date">
-                                </div>
-                                <div class="form-input time-input">
-                                    {{-- <label>Date of problem</label> --}}
-                                    <input type="time">
+                                <div class="form-input textarea-input">
+                                    {{-- <label>Description of problem</label> --}}
+                                    <input type="textarea" placeholder="Solution Name">
                                 </div>
                             </div>  
                             <div class="form-row">
                                 <div class="form-input textarea-input">
                                     {{-- <label>Description of problem</label> --}}
-                                    <input type="textarea">
+                                    <input type="textarea" placeholder="Description">
                                 </div>
                             </div>  
                             <div class="form-row">
@@ -94,6 +87,9 @@
                                     </select>
                                 </div>
                             </div>    
+                            <div class="form-row">
+                                <button style="width: 100%" type="submit">Submit</button>
+                            </div>   
                         </form>
                     </div>
                 </div>

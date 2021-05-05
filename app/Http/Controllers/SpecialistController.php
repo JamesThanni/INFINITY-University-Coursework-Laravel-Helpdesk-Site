@@ -15,6 +15,10 @@ class SpecialistController extends Controller
         return view('specialist_FAQ');
     }
 
+    public function loadSolvePage() {
+        return view('specialist_solve');
+    }
+
     public function loadEditPage() {
         $hardware = Hardware::all();
         return view('specialist_edit', [ 'hardware' => $hardware ] );
@@ -28,6 +32,14 @@ class SpecialistController extends Controller
         $hardware->make = $request->make;
         $hardware->save();
 
+        return redirect('/specialist/edit');
+    }
+
+    public function removeHardware(Request $request) {
+        // $message = count($request);
+        // error_log('Some message here.');
+        // echo "<script type='text/javascript'>console.log('$message');</script>";  
+        Hardware::destroy($request->serial_no);
         return redirect('/specialist/edit');
     }
 }

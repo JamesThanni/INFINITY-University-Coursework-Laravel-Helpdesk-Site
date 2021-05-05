@@ -3,7 +3,7 @@
 
         @section('employee-page-content')
             
-        <nav id="side-nav">
+        {{-- <nav id="side-nav">
             <div class="side-nav-item">
                 <i class="fa fa-list"></i>
                 <h3>FAQ Option 1</h3>
@@ -20,7 +20,7 @@
                 <i class="fa fa-list"></i>
                 <h3>FAQ Option 4</h3>
             </div>
-        </nav>
+        </nav> --}}
         
         <div id="main-content" class="scroll">
             <div class="content-row">

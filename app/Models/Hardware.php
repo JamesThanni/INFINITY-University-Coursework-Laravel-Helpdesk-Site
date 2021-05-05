@@ -11,4 +11,5 @@ class Hardware extends Model
     
     public $timestamps = false;
     protected $table = 'Hardware';
+    protected $primaryKey = 'serial_no';
 }

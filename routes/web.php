@@ -31,6 +31,8 @@ Route::get('/analyst/dashboard', [AnalystController::class, 'index']);
 Route::get('/specialist', [SpecialistController::class, 'index']);
 Route::get('/specialist/dashboard', [SpecialistController::class, 'index']);
 Route::get('/specialist/FAQ', [SpecialistController::class, 'loadFAQPage']);
+Route::get('/specialist/solve', [SpecialistController::class, 'loadSolvePage']);
 Route::get('/specialist/edit', [SpecialistController::class, 'loadEditPage']);
 Route::post('/specialist/edit/add-hardware', [SpecialistController::class, 'addHardware']);
+Route::post('/specialist/edit/remove-hardware', [SpecialistController::class, 'removeHardware']);
 
