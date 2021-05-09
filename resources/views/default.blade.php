@@ -354,6 +354,11 @@
         padding: 1em;
     }
 
+    .login-box-container form {
+        display: flex;
+        flex-direction: row;
+    }
+    
     .links {
         display: flex;
         flex-direction: row;
