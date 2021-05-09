@@ -45,6 +45,7 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        font-family: 'Nunito Sans', sans-serif;
     }
 
     h1, h2, h3, h4, h5, p, a, input, select, table, button, textarea, label {
