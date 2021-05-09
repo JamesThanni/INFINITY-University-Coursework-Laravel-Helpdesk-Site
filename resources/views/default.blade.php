@@ -261,6 +261,10 @@
         font-weight: bold;
     }
     
+    #divided-content {
+        background-color: #161616;
+    }
+    
     .content-form {
         width: 100%;
     }
@@ -358,7 +362,7 @@
         display: flex;
         flex-direction: row;
     }
-    
+
     .links {
         display: flex;
         flex-direction: row;
