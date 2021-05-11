@@ -5,7 +5,7 @@
 
         <div class="login-box-container">
                 <h1>Make-It-All-Helpdesk</h1>
-                <form method="post" action="/login/user">
+                <form method="post" action="login/user">
                         @csrf <!-- {{ csrf_field() }} -->
                         <input type="text" name="email" placeholder="Email">
                         <input type="text" name="password" placeholder="Password">
