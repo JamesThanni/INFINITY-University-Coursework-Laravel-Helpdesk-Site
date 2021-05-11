@@ -202,7 +202,7 @@
         flex-direction: row;
         justify-content: space-between;
         margin-bottom: 2em;
-        align-items: center;
+        align-items:stretch;
     }
 
     .content-row h1 {
@@ -240,7 +240,7 @@
         flex-direction: column;
         width: 100%;
         margin: .25em;
-        min-height: 400px;
+        /* min-height: 400px; */
     }
 
     .content-box .top-row {
@@ -281,6 +281,19 @@
         flex-direction: column;
         min-width: 50%;
         padding-right: 1em; 
+    }
+
+    .checkbox-input {
+        align-items: flex-start;
+    }
+
+    .button-input {
+        justify-content: flex-end;
+    }
+
+    .checkbox-input input {
+        min-width: 0;
+        outline: 2px solid black;
     }
 
     .form-row .form-input:nth-last-child(1) {
@@ -331,6 +344,7 @@
         width: 100%;
         font-size: 12px;
         opacity: .75;
+        display: flex;
     }
 
     .table td i {

@@ -58,11 +58,11 @@
                                     <label>Make</label>
                                     <input type="text" name="make">
                                 </div>
+                                <div class="form-input button-input">
+                                    <button type="submit" style="width:100%">Add hardware</button>
+                                </div>
                             </div>
-                            <div class="form-row">
-                                <button type="submit">Add hardware</button>
-                            </div>
-
+                            
                         </form>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                                         <td>{{ $h->hardType }}</td>
                                         <td>{{ $h->make }}</td>
                                         <td>
-                                            {{-- <i class="fa fa-edit" style="color:#03fcb1"></i> --}}
+                                            <i class="fa fa-edit yellow"></i>
                                             <form method="post" action="edit/remove-hardware">
                                                 @csrf <!-- {{ csrf_field() }} -->
 
@@ -109,6 +109,260 @@
                 </div>
 
             </div>
+
+            <div class="content-row">
+
+                <div class="content-box">
+                    <div class="top-row">
+                        <h2>New Software</h2>
+                    </div>
+
+                    <div class="content-box-row">
+                        <p>Please enter software details:</p>
+                    </div>
+                    <div class="content-box-row">
+                        <form class="content-form" method="post" action="edit/add-software">
+                            @csrf <!-- {{ csrf_field() }} -->
+
+                            <div class="form-row">
+                                <div class="form-input num-input">
+                                    <label>Software Name</label>
+                                    <input type="text" name="softName">
+                                </div>
+                                <div class="form-input checkbox-input">
+                                    <label>Licensed</label>
+                                    <input type="checkbox" name="licensed">
+                                </div>
+                            </div>   
+                            
+                            <div class="form-row">
+                                <div class="form-input checkbox-input">
+                                    <label>Supported</label>
+                                    <input type="checkbox" name="supported">
+                                </div>
+                                <div class="form-input button-input">
+                                    <button type="submit" style="width:100%">Add software</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="top-row">
+                        <h2></h2>
+                        <div>
+                            <input type="text" placeholder="please enter keyword" onkeyup="searchSoftwareTable(event, 1)"/>
+                            <button>Filter By</button>
+                        </div>
+                    </div>
+                    <div class="content-box-row">
+                        <table class="table hardware-table scroll">
+                            <thead>
+                                <tr>
+                                    <th>Software Name</th>
+                                    <th>Licensed</th>
+                                    <th>Supported</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach( $software as $s ) 
+                                    <tr>
+                                        <td>{{ $s->softName }}</td>
+                                        <td>{{ $s->licensed }}</td>
+                                        <td>{{ $s->supported }}</td>
+                                        <td>
+                                            {{-- <i class="fa fa-edit" style="color:#03fcb1"></i> --}}
+                                            <form>
+                                                @csrf <!-- {{ csrf_field() }} -->
+
+                                                <input type="text" name='softID' value={{ $s->softID }} hidden>
+                                                <button class="no-style" type="submit"><i class="fa fa-minus-circle" style="color:rgb(255, 58, 58)"></i></button>
+                                            
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="content-row">
+
+                <div class="content-box">
+                    <div class="top-row">
+                        <h2>New Operating System</h2>
+                    </div>
+
+                    <div class="content-box-row">
+                        <p>Please enter OS details:</p>
+                    </div>
+                    <div class="content-box-row">
+                        <form class="content-form" method="post" action="edit/add-os">
+                            @csrf <!-- {{ csrf_field() }} -->
+
+                            <div class="form-row">
+                                <div class="form-input num-input">
+                                    <label>OS Version</label>
+                                    <input type="text" name="version">
+                                </div>
+                                <div class="form-input checkbox-input">
+                                    <label>Licensed</label>
+                                    <input type="checkbox" name="licensed">
+                                </div>
+                            </div>   
+                            
+                            <div class="form-row">
+                                <div class="form-input checkbox-input">
+                                    <label>Supported</label>
+                                    <input type="checkbox" name="supported">
+                                </div>
+                                <div class="form-input button-input">
+                                    <button type="submit" style="width:100%">Add OS</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="top-row">
+                        <h2></h2>
+                        <div>
+                            <input type="text" placeholder="please enter keyword" onkeyup="searchSoftwareTable(event, 1)"/>
+                            <button>Filter By</button>
+                        </div>
+                    </div>
+                    <div class="content-box-row">
+                        <table class="table hardware-table scroll">
+                            <thead>
+                                <tr>
+                                    <th>OS Version</th>
+                                    <th>Licensed</th>
+                                    <th>Supported</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach( $os as $o ) 
+                                <tr>
+                                    <td>{{ $o->version }}</td>
+                                    <td>{{ $o->licensed }}</td>
+                                    <td>{{ $o->supported }}</td>
+                                    <td>
+                                        {{-- <i class="fa fa-edit" style="color:#03fcb1"></i> --}}
+                                        <form>
+                                            @csrf <!-- {{ csrf_field() }} -->
+
+                                            <input type="text" name='OSID' value={{ $o->OSID }} hidden>
+                                            <button class="no-style" type="submit"><i class="fa fa-minus-circle" style="color:rgb(255, 58, 58)"></i></button>
+                                        
+                                        </form>
+                                    </td>
+                                </tr>
+                             @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="content-row">
+
+                <div class="content-box">
+                    <div class="top-row">
+                        <h2>New Solution</h2>
+                    </div>
+
+                    <div class="content-box-row">
+                        <p>Please enter solution details:</p>
+                    </div>
+                    <div class="content-box-row">
+                        <form class="content-form" method="post" action="edit/add-os">
+                            @csrf <!-- {{ csrf_field() }} -->
+
+                            <div class="form-row">
+                                <div class="form-input date-input">
+                                    <label>Date solved</label>
+                                    <input type="date" name="dateSolved">
+                                </div>
+                                <div class="form-input time-input">
+                                    <label>Time solved</label>
+                                    <input type="time" name="timeSolved">
+                                </div>
+                            </div>   
+                            
+                            <div class="form-row">
+                                <div class="form-input textarea-input">
+                                    <label>Solution Description</label>
+                                    <input type="textarea" name="solutionDescription">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-input text-input">
+                                    <label>Solution Solver</label>
+                                    <input type="text" name="solutionSolver">
+                                </div>
+                                <div class="form-input button-input">
+                                    <button type="submit" style="width:100%">Add solution</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="top-row">
+                        <h2></h2>
+                        <div>
+                            <input type="text" placeholder="please enter keyword" onkeyup="searchSoftwareTable(event, 1)"/>
+                            <button>Filter By</button>
+                        </div>
+                    </div>
+                    <div class="content-box-row">
+                        <table class="table hardware-table scroll">
+                            <thead>
+                                <tr>
+                                    <th>Date Solved</th>
+                                    <th>Time Solved</th>
+                                    <th>Description</th>
+                                    <th>Solver</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach( $solutions as $solution ) 
+                                <tr>
+                                    <td>{{ $solution->dateSolved }}</td>
+                                    <td>{{ $solution->timeSolved }}</td>
+                                    <td>{{ $solution->solutionDescription }}</td>
+                                    <td>{{ $solution->solutionSolver }}</td>
+                                    <td>
+                                        <form>
+                                            @csrf <!-- {{ csrf_field() }} -->
+
+                                            <input type="text" name='solutionID' value={{ $solution->solutionID }} hidden>
+                                            <button class="no-style" type="submit"><i class="fa fa-minus-circle" style="color:rgb(255, 58, 58)"></i></button>
+                                        
+                                        </form>
+                                    </td>
+                                </tr>
+                             @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+
         
         </div>
 

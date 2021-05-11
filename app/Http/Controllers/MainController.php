@@ -11,6 +11,7 @@ use App\Models\Hardware;
 use App\Models\Software;
 use App\Models\OS;
 use App\Models\Location;
+use App\Models\Solution;
 
 class MainController extends Controller
 {
@@ -78,6 +79,10 @@ class MainController extends Controller
 
     public static function getSoftware() {
         return Software::all();
+    }
+
+    public static function getSolutions() {
+        return Solution::all();
     }
 
 }

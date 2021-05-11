@@ -3,7 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\MainController;
+
+// Remove later
 use App\Models\Hardware;
+use App\Models\Software;
+use App\Models\OS;
+use App\Models\Location;
+use App\Models\Solution;
 
 class SpecialistController extends Controller
 {
@@ -20,8 +27,17 @@ class SpecialistController extends Controller
     }
 
     public function loadEditPage() {
-        $hardware = Hardware::all();
-        return view('specialist_edit', [ 'hardware' => $hardware ] );
+        $hardware = MainController::getHardware();
+        $software = MainController::getSoftware();
+        $os = MainController::getOS();
+        $solutions = MainController::getSolutions();
+        
+        return view('specialist_edit', [
+             'hardware' => $hardware, 
+             'software' => $software, 
+             'os' => $os, 
+             'solutions' => $solutions 
+        ] );
     }
 
     public function addHardware(Request $request) {
@@ -36,10 +52,8 @@ class SpecialistController extends Controller
     }
 
     public function removeHardware(Request $request) {
-        // $message = count($request);
-        // error_log('Some message here.');
-        // echo "<script type='text/javascript'>console.log('$message');</script>";  
         Hardware::destroy($request->serial_no);
         return redirect('/specialist/edit');
     }
+
 }
