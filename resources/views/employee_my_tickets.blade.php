@@ -6,19 +6,19 @@
         <nav id="side-nav">
             <div class="side-nav-item">
                 <i class="fa fa-plus-square green"></i>
-                <h3>Create a ticket</h3>
+                <a href="{{ url('employee/dashboard') }}"><h3>Create a ticket</h3></a>
             </div>
             <div class="side-nav-item">
                 <i class="fa fa-phone red"></i>
-                <h3>Unsolved tickets </h3>
+                <a href="{{ url('employee/tickets/unsolved') }}"><h3>Unsolved tickets </h3></a>
             </div>
             <div class="side-nav-item">
                 <i class="fa fa-question blue"></i>
-                <h3>Pending tickets</h3>
+                <a href="{{ url('employee/tickets/pending') }}"><h3>Pending tickets</h3></a>
             </div>
             <div class="side-nav-item">
                 <i class="fa fa-square yellow"></i>
-                <h3>Solved tickets</h3>
+                <a href="{{ url('employee/tickets/solved') }}"><h3>Solved tickets</h3></a>
             </div>
         </nav>
         
@@ -45,9 +45,9 @@
             <div class="content-row">
                 <div class="content-box">
                     <div class="top-row">
-                        <h2>Your tickets</h2>
+                        <h2>{{ $title }}</h2>
                         <div>
-                            <input type="text" placeholder="please enter keyword"/>
+                            <input type="text" placeholder="please enter keywords" onkeyup="searchEmployeeTicketsTable(event, 2)"/>
                             <button>Filter By</button>
                         </div>
                     </div>
@@ -56,79 +56,21 @@
                         <table class="table scroll">
                             <thead>
                                 <tr>
-                                    <th>Date</th>
-                                    <th>ID</th>
-                                    <th>Title</th>
-                                    <th>Type</th>
-                                    <th>Status</th>
-                                    <th>Priority</th>
-                                    <th>Specialist</th>
+                                    @foreach ($fields as $field)
+                                        <th>{{ $field }}</th>
+                                    @endforeach
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                </tr>
-                                <tr>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                </tr>
-                                <tr>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                </tr>
-                                <tr>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                </tr>
-                                <tr>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                </tr>
-                                <tr>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                </tr>
-                                <tr>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                </tr>
+                                @foreach ($tickets as $ticket)
+                                    <tr>
+                                        <td>#{{ $ticket->ticketID }}</td>
+                                        <td>{{ $ticket->dateCreated }}</td>
+                                        <td>{{ $ticket->description }}</td>
+                                        <td>{{ $ticket->reason }}</td> 
+                                        <td>{{ $ticket->priority }}</td> 
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -279,7 +279,12 @@
     .form-row .form-input {
         display: flex;
         flex-direction: column;
-        min-width: 49%;
+        min-width: 50%;
+        padding-right: 1em; 
+    }
+
+    .form-row .form-input:nth-last-child(1) {
+        padding: 0;
     }
 
     .textarea-input {
@@ -322,7 +327,7 @@
     }
 
     .table td {
-        padding: 20px 0; 
+        padding: 20px 10px; 
         width: 100%;
         font-size: 12px;
         opacity: .75;
@@ -409,6 +414,15 @@
         .content-row {
             flex-direction: column;
         }
+
+        .content-form .form-row {
+            flex-direction: column;
+            margin: 0;
+        }
+
+        .form-input {
+            padding: 1em 0em !important;
+        }
     }
 
     </style>
@@ -437,6 +451,12 @@
         }
 
         function searchHardwareTable(e, index) {
+            var input = e.target;
+            var table = input.parentNode.parentNode.nextElementSibling.children[0];
+            searchTable(e, index, table, input);
+        }
+
+        function searchEmployeeTicketsTable(e, index) {
             var input = e.target;
             var table = input.parentNode.parentNode.nextElementSibling.children[0];
             searchTable(e, index, table, input);

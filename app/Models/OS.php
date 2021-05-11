@@ -5,7 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class OS extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+    protected $table = 'OperatingSystems';
+    protected $primaryKey = 'OSID';
 }

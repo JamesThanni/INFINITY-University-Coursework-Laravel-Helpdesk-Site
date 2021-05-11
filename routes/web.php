@@ -24,8 +24,12 @@ Route::get('/logout', [MainController::class, 'logout']);
 
 Route::get('/employee', [EmployeeController::class, 'index']);
 Route::get('/employee/dashboard', [EmployeeController::class, 'index']);
+Route::post('/employee/dashboard/add-ticket', [EmployeeController::class, 'addTicket']);
 Route::get('/employee/FAQ', [EmployeeController::class, 'loadFAQPage']);
 Route::get('/employee/tickets', [EmployeeController::class, 'loadTicketsPage']);
+Route::get('/employee/tickets/unsolved', [EmployeeController::class, 'loadUnsolvedTickets']);
+Route::get('/employee/tickets/solved', [EmployeeController::class, 'loadSolvedTickets']);
+Route::get('/employee/tickets/pending', [EmployeeController::class, 'loadPendingTickets']);
 
 Route::get('/analyst', [AnalystController::class, 'index']);
 Route::get('/analyst/dashboard', [AnalystController::class, 'index']);

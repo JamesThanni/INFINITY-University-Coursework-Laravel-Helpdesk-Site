@@ -7,6 +7,11 @@ use App\Models\User;
 use App\Models\Employee;
 use App\Models\Specialist;
 
+use App\Models\Hardware;
+use App\Models\Software;
+use App\Models\OS;
+use App\Models\Location;
+
 class MainController extends Controller
 {
     public function index() {
@@ -58,4 +63,21 @@ class MainController extends Controller
         $request->session()->forget('specIDp');
         return view('login', [ 'users' => [] ]);
     }
+
+    public static function getLocations() {
+        return Location::all();
+    }
+
+    public static function getHardware() {
+        return Hardware::all();
+    }
+
+    public static function getOS() {
+        return OS::all();
+    }
+
+    public static function getSoftware() {
+        return Software::all();
+    }
+
 }

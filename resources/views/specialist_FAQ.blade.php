@@ -24,7 +24,6 @@
         <div id="main-content" class="scroll">
             <div class="content-row">
 
-                @section('faq-section')
                     <h1>FAQ</h1>
                     <!-- Replace text with tickets and solutions from database, possibly created using PHP and laravel controllers -->
                     <div class="content-box">
@@ -70,7 +69,6 @@
                         </div>
                     </div>
 
-                @endsection
             </div>
         
         </div>
