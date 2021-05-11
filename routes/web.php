@@ -19,6 +19,8 @@ use App\Http\Controllers\SpecialistController;
 
 Route::get('/', [MainController::class, 'index']);
 Route::get('/login', [MainController::class, 'index']);
+Route::post('/login/user', [MainController::class, 'login']);
+Route::get('/logout', [MainController::class, 'logout']);
 
 Route::get('/employee', [EmployeeController::class, 'index']);
 Route::get('/employee/dashboard', [EmployeeController::class, 'index']);

@@ -1,6 +1,7 @@
 @extends('default')
 
 @section('page-content')
+<p>Spec ID: {{ (session('specID')) }}</p>
 
 <div class="wrapper">
     <nav id="top-nav">
@@ -14,7 +15,7 @@
             <a href="{{ url('specialist/dashboard') }}"><h3 class="nav-item">Dashboard</h3></a>
             <a href="{{ url('specialist/FAQ') }}"><h3 class="nav-item">FAQ</h3></a>
             <a href="{{ url('specialist/edit') }}"><h3 class="nav-item">Edit</h3></a>
-            <a href="{{ url('login') }}"><h3 class="nav-item fancy-nav-item">Log Out</h3></a>
+            <a href="{{ url('logout') }}"><h3 class="nav-item fancy-nav-item">Log Out</h3></a>
         </div>
     </nav>
     @yield('specialist-page-content')

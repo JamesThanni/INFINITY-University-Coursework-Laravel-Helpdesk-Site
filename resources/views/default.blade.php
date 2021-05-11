@@ -414,7 +414,7 @@
     </style>
 </head>
 <body>
-    
+    <p>User ID: {{ (session('userID')) }}</p>
     @yield('page-content')
 
     <script>

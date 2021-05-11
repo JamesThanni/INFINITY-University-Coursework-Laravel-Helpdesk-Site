@@ -21,6 +21,7 @@
                     <div class="top-row">
                         <h2>FAQ</h2>
                         <input placeholder="search FAQ" type="text" />
+                        @yield('faq-section')
                     </div>
                 </div>
             </div>

@@ -24,50 +24,53 @@
         <div id="main-content" class="scroll">
             <div class="content-row">
 
-                <h1>FAQ</h1>
-                <!-- Replace text with tickets and solutions from database, possibly created using PHP and laravel controllers -->
-                <div class="content-box">
-                    <div class="content-box-row" id="divided-content">
-                        <strong>Windows won't boot after installing</strong>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                            Qui id totam eligendi tempora
-                        </p>
-                        <a class="expand">X</a>
+                @section('faq-section')
+                    <h1>FAQ</h1>
+                    <!-- Replace text with tickets and solutions from database, possibly created using PHP and laravel controllers -->
+                    <div class="content-box">
+                        <div class="content-box-row" id="divided-content">
+                            <strong>Windows won't boot after installing</strong>
+                            <p>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                                Qui id totam eligendi tempora
+                            </p>
+                            <a class="expand">X</a>
+                        </div>
+                        <div class="content-box-row" id="divided-content">
+                            <strong>Windows won't boot after installing</strong>
+                            <p>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                                Qui id totam eligendi tempora
+                            </p>
+                            <a class="expand">X</a>
+                        </div>
+                        <div class="content-box-row" id="divided-content">
+                            <strong>Windows won't boot after installing</strong>
+                            <p>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                                Qui id totam eligendi tempora
+                            </p>
+                            <a class="expand">X</a>
+                        </div>
+                        <div class="content-box-row" id="divided-content">
+                            <strong>Windows won't boot after installing</strong>
+                            <p>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                                Qui id totam eligendi tempora
+                            </p>
+                            <a class="expand">X</a>
+                        </div>
+                        <div class="content-box-row" id="divided-content">
+                            <strong>Windows won't boot after installing</strong>
+                            <p>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                                Qui id totam eligendi tempora
+                            </p>
+                            <a class="expand">X</a>
+                        </div>
                     </div>
-                    <div class="content-box-row" id="divided-content">
-                        <strong>Windows won't boot after installing</strong>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                            Qui id totam eligendi tempora
-                        </p>
-                        <a class="expand">X</a>
-                    </div>
-                    <div class="content-box-row" id="divided-content">
-                        <strong>Windows won't boot after installing</strong>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                            Qui id totam eligendi tempora
-                        </p>
-                        <a class="expand">X</a>
-                    </div>
-                    <div class="content-box-row" id="divided-content">
-                        <strong>Windows won't boot after installing</strong>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                            Qui id totam eligendi tempora
-                        </p>
-                        <a class="expand">X</a>
-                    </div>
-                    <div class="content-box-row" id="divided-content">
-                        <strong>Windows won't boot after installing</strong>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                            Qui id totam eligendi tempora
-                        </p>
-                        <a class="expand">X</a>
-                    </div>
-                </div>
+
+                @endsection
             </div>
         
         </div>
