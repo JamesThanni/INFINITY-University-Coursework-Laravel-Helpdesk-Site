@@ -49,7 +49,7 @@
     }
 
     h1, h2, h3, h4, h5, p, a, input, select, table, button, textarea, label {
-        font-family: Arial, Helvetica, sans-serif;  
+        font-family: 'Nunito Sans', sans-serif; 
         color: white;
         font-weight: 100;
     }
