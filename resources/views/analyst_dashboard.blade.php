@@ -27,6 +27,57 @@
                 <h1>DASHBOARD</h1>
 
             </div>
+
+            <div class="content-row">
+
+                <div class="content-box">
+                    <div class="top-row">
+                        <h2>Most Faulty Software</h2>
+                    </div>
+                    <div class="content-box-row" id="most-faulty-software">
+                        
+                    </div> 
+                </div>
+
+                <div class="content-box">
+                    <div class="top-row">
+                        <h2>Solving Tickets</h2>
+                    </div>
+                    <div class="content-box-row" id="solving-tickets">
+                        
+                    </div> 
+                </div>
+
+            </div>
+            <div class="content-row">
+
+                <div class="content-box">
+                    <div class="top-row">
+                        <h2>Today vs Yesterday</h2>
+                    </div>
+                    <div class="content-box-row" id="today-vs-yesterday">
+                        
+                    </div> 
+                </div>
+
+                <div class="content-box">
+                    <div class="top-row">
+                        <h2>Live Problem Status</h2>
+                    </div>
+                    <div class="content-box-row" id="live-problem-status">
+                        
+                    </div> 
+                </div>
+                <div class="content-box">
+                    <div class="top-row">
+                        <h2>Test</h2>
+                    </div>
+                    <div class="content-box-row" id="test">
+                        
+                    </div> 
+                </div>
+
+            </div>
         
         </div>
 

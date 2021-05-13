@@ -26,6 +26,8 @@
             <div class="content-row">
 
                 <h1>FAQ</h1>
+                
+                @include('analyst_page')
 
             </div>
         
