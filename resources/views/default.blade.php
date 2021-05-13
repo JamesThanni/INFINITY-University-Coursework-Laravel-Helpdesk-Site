@@ -7,7 +7,7 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <title>Employee Dashboard</title>
     <style>
-
+    @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
      /* https://codepen.io/GhostRider/pen/GHaFw */
 
     .scroll {
