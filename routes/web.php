@@ -30,6 +30,8 @@ Route::get('/employee/tickets', [EmployeeController::class, 'loadTicketsPage']);
 Route::get('/employee/tickets/unsolved', [EmployeeController::class, 'loadUnsolvedTickets']);
 Route::get('/employee/tickets/solved', [EmployeeController::class, 'loadSolvedTickets']);
 Route::get('/employee/tickets/pending', [EmployeeController::class, 'loadPendingTickets']);
+Route::post('/employee/tickets/pending/deny', [EmployeeController::class, 'denyTicket']);
+Route::post('/employee/tickets/pending/accept', [EmployeeController::class, 'acceptTicket']);
 
 Route::get('/analyst', [AnalystController::class, 'index']);
 Route::get('/analyst/dashboard', [AnalystController::class, 'index']);

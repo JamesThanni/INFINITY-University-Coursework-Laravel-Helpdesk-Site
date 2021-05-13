@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ticket;
+use App\Models\Solution;
 use App\Http\Controllers\MainController;
 
 class EmployeeController extends Controller
@@ -29,34 +30,64 @@ class EmployeeController extends Controller
     public function loadTicketsPage(Request $request) {
         $empID = $request->session()->get('empID');
         $tickets = Ticket::where('empID', $empID)->get();
+        $output = array();
+        foreach($tickets as $ticket ) {
+            $solutions = Solution::where('solutionID', $ticket->solutionID)->get();
+            if(count($solutions) > 0) {
+                $solution = $solutions[0];
+                $obj = [ $ticket->ticketID, $solution->dateSolved, $ticket->description, $solution->solutionDescription, $ticket->status ];
+                array_push($output, $obj);
+            } else {
+                $obj = [ $ticket->ticketID, 'n/a', $ticket->description, 'Not solved yet', $ticket->status ];
+                array_push($output, $obj);
+            }
+        }
         return view('employee_my_tickets', [ 
-            'tickets' => $tickets, 
-            'fields' => ['Ticket ID', 'Date Created', 'Description', 'Reason', 'Priority'], 
-            'title' => 'All Tickets'
+            'tickets' => $output, 
+            'fields' => ['Ticket ID', 'Date Created', 'Description', 'Solution', 'Status'], 
+            'title' => 'Solved Tickets' 
         ]);
     }
 
     public function loadUnsolvedTickets(Request $request) {
         $empID = $request->session()->get('empID');
         $tickets = Ticket::where('empID', $empID)
-                         ->whereNull('solutionID')
+                         ->where('status', 'Unsolved')
                          ->get();
+        
+        $output = array();
+        foreach($tickets as $ticket ) {
+            $obj = [ $ticket->ticketID, $ticket->dateCreated, $ticket->description, $ticket->reason, $ticket->priority ];
+            array_push($output, $obj);
+        }
         return view('employee_my_tickets', [ 
-            'tickets' => $tickets, 
+            'tickets' => $output, 
             'fields' => ['Ticket ID', 'Date Created', 'Description', 'Reason', 'Priority'], 
-            'title' => 'Unsolved Tickets' 
+            'title' => 'Unsolved Tickets', 
+            'type' => 'unsolved'  
         ]);
     }
 
     public function loadSolvedTickets(Request $request) {
         $empID = $request->session()->get('empID');
         $tickets = Ticket::where('empID', $empID)
-                         ->where('solutionID', "!=", null)
+                         ->where('status', 'Solved')
                          ->get();
+        $output = array();
+        foreach($tickets as $ticket ) {
+            $solutions = Solution::where('solutionID', $ticket->solutionID)->get();
+            if(count($solutions) > 0) {
+                $solution = $solutions[0];
+                $obj = [ $ticket->ticketID, $solution->dateSolved, $ticket->description, $solution->solutionDescription ];
+                array_push($output, $obj);
+            }
+        }
+        // return var_dump($output[0]);
         return view('employee_my_tickets', [ 
-            'tickets' => $tickets, 
-            'fields' => ['Ticket ID', 'Date Created', 'Description', 'Reason', 'Priority'], 
-            'title' => 'Solved Tickets' 
+            'tickets' => $output, 
+            'fields' => ['Ticket ID', 'Date Created', 'Description', 'Solution'], 
+            'title' => 'Solved Tickets', 
+            'type' => 'solved'  
         ]);
     }
 
@@ -65,12 +96,22 @@ class EmployeeController extends Controller
 
         $empID = $request->session()->get('empID');
         $tickets = Ticket::where('empID', $empID)
-                         ->where('solutionID', "!=", null)
+                         ->where('status', 'Pending')
                          ->get();
+        $output = array();
+        foreach($tickets as $ticket ) {
+            $solutions = Solution::where('solutionID', $ticket->solutionID)->get();
+            if(count($solutions) > 0) {
+                $solution = $solutions[0];
+                $obj = [ $ticket->ticketID, $solution->dateSolved, $ticket->description, $solution->solutionDescription ];
+                array_push($output, $obj);
+            }
+        }
         return view('employee_my_tickets', [ 
-            'tickets' => $tickets, 
-            'fields' => ['Ticket ID', 'Date Created', 'Description', 'Reason', 'Priority'], 
-            'title' => 'Pending Tickets' 
+            'tickets' => $output, 
+            'fields' => ['Ticket ID', 'Date Created', 'Description', 'Solution', 'Action'], 
+            'title' => 'Solved Tickets', 
+            'type' => 'pending' 
         ]);
     }
     
@@ -89,9 +130,26 @@ class EmployeeController extends Controller
         $ticket['locationID'] = $request->locationID;
         $ticket['solutionID'] = null;
         $ticket['sepcID'] = 2;
+        $ticket['status'] = 'Unsolved';
         $ticket->save();
 
         return redirect('/employee/tickets/unsolved');
+    }
+
+    public function denyTicket(Request $request) {
+        $ticket = Ticket::find($request->ticketID);
+        $ticket['status'] = 'Unsolved';
+        $ticket->save();
+
+        return redirect('/employee/tickets/pending');
+    }
+
+    public function acceptTicket(Request $request) {
+        $ticket = Ticket::find($request->ticketID);
+        $ticket['status'] = 'Solved';
+        $ticket->save();
+
+        return redirect('/employee/tickets/pending');
     }
 
     

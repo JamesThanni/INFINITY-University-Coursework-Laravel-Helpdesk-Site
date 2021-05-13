@@ -37,7 +37,7 @@
                         <p>Please input problem details:</p>
                     </div>
                     <div class="content-box-row">
-                        <form class="content-form" method="post" action="employee/dashboard/add-ticket">
+                        <form class="content-form" method="post" action="/employee/dashboard/add-ticket">
                             @csrf <!-- {{ csrf_field() }} -->
 
                             <div class="form-row">

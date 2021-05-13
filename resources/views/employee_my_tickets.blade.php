@@ -64,11 +64,28 @@
                             <tbody>
                                 @foreach ($tickets as $ticket)
                                     <tr>
-                                        <td>#{{ $ticket->ticketID }}</td>
-                                        <td>{{ $ticket->dateCreated }}</td>
-                                        <td>{{ $ticket->description }}</td>
-                                        <td>{{ $ticket->reason }}</td> 
-                                        <td>{{ $ticket->priority }}</td> 
+                                        @foreach ($ticket as $info)
+                                            <td>{{ $info }}</td>
+                                        @endforeach
+                                        
+                                        @if ($type == 'pending')
+                                            <td>
+                                                <form method="post" action="pending/accept">
+                                                    @csrf <!-- {{ csrf_field() }} -->
+
+                                                    <input type="text" name='ticketID' value={{ $ticket[0] }} hidden>
+                                                    <button class="no-style" type="submit"><i class="fa fa-check-circle green"></i></button>
+                                                
+                                                </form>
+                                                <form method="post" action="pending/deny">
+                                                    @csrf <!-- {{ csrf_field() }} -->
+
+                                                    <input type="text" name='ticketID' value={{ $ticket[0] }} hidden>
+                                                    <button class="no-style" type="submit"><i class="fa fa-minus-circle" style="color:rgb(255, 58, 58)"></i></button>
+                                                
+                                                </form>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>
