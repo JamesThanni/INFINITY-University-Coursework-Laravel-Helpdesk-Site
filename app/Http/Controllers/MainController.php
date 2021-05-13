@@ -12,6 +12,7 @@ use App\Models\Software;
 use App\Models\OS;
 use App\Models\Location;
 use App\Models\Solution;
+use App\Models\FAQ;
 
 class MainController extends Controller
 {
@@ -84,5 +85,11 @@ class MainController extends Controller
     public static function getSolutions() {
         return Solution::all();
     }
+
+    public static function getFAQ() {
+        return FAQ::all();
+    }
+
+  
 
 }

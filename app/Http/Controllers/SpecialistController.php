@@ -19,7 +19,11 @@ class SpecialistController extends Controller
     }
 
     public function loadFAQPage() {
-        return view('specialist_FAQ');
+        
+        $faq = MainController::getFAQ();
+        return view('specialist_FAQ', [
+            'faq' => $faq,
+        ]);
     }
 
     public function loadSolvePage() {
