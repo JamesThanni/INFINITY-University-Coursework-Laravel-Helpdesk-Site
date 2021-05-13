@@ -35,12 +35,14 @@ class SpecialistController extends Controller
         $software = MainController::getSoftware();
         $os = MainController::getOS();
         $solutions = MainController::getSolutions();
+        $faqs = MainController::getFAQ();
         
+
         return view('specialist_edit', [
              'hardware' => $hardware, 
              'software' => $software, 
              'os' => $os, 
-             'solutions' => $solutions 
+             'faqs' => $faqs
         ] );
     }
 

@@ -278,14 +278,14 @@
 
                 <div class="content-box">
                     <div class="top-row">
-                        <h2>New Solution</h2>
+                        <h2>New FAQ</h2>
                     </div>
 
                     <div class="content-box-row">
-                        <p>Please enter solution details:</p>
+                        <p>Please enter FAQ details:</p>
                     </div>
                     <div class="content-box-row">
-                        <form class="content-form" method="post" action="edit/add-os">
+                        <form class="content-form" method="post" action="edit/add-faq">
                             @csrf <!-- {{ csrf_field() }} -->
 
                             <div class="form-row">
@@ -301,17 +301,17 @@
                             
                             <div class="form-row">
                                 <div class="form-input textarea-input">
-                                    <label>Solution Description</label>
-                                    <input type="textarea" name="solutionDescription">
+                                    <label>Solution</label>
+                                    <input type="textarea" name="solution">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-input text-input">
-                                    <label>Solution Solver</label>
-                                    <input type="text" name="solutionSolver">
+                                    <label>Problem</label>
+                                    <input type="text" name="problem">
                                 </div>
                                 <div class="form-input button-input">
-                                    <button type="submit" style="width:100%">Add solution</button>
+                                    <button type="submit" style="width:100%">Add FAQ</button>
                                 </div>
                             </div>
                         </form>
@@ -330,25 +330,21 @@
                         <table class="table hardware-table scroll">
                             <thead>
                                 <tr>
-                                    <th>Date Solved</th>
-                                    <th>Time Solved</th>
-                                    <th>Description</th>
-                                    <th>Solver</th>
+                                    <th>Problem</th>
+                                    <th>Solution</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach( $solutions as $solution ) 
+                                @foreach( $faqs as $faq ) 
                                 <tr>
-                                    <td>{{ $solution->dateSolved }}</td>
-                                    <td>{{ $solution->timeSolved }}</td>
-                                    <td>{{ $solution->solutionDescription }}</td>
-                                    <td>{{ $solution->solutionSolver }}</td>
+                                    <td>{{ $faq->problem }}</td>
+                                    <td>{{ $faq->solution }}</td>
                                     <td>
                                         <form>
                                             @csrf <!-- {{ csrf_field() }} -->
 
-                                            <input type="text" name='solutionID' value={{ $solution->solutionID }} hidden>
+                                            <input type="text" name='faqID' value={{ $faq->faqID }} hidden>
                                             <button class="no-style" type="submit"><i class="fa fa-minus-circle" style="color:rgb(255, 58, 58)"></i></button>
                                         
                                         </form>
