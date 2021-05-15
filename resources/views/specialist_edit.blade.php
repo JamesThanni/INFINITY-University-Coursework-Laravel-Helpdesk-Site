@@ -92,7 +92,7 @@
                                         <td>{{ $h->hardType }}</td>
                                         <td>{{ $h->make }}</td>
                                         <td>
-                                            <i class="fa fa-edit yellow"></i>
+                                            {{-- <i class="fa fa-edit yellow"></i> --}}
                                             <form method="post" action="edit/remove-hardware">
                                                 @csrf <!-- {{ csrf_field() }} -->
 
@@ -341,7 +341,7 @@
                                     <td>{{ $faq->problem }}</td>
                                     <td>{{ $faq->solution }}</td>
                                     <td>
-                                        <form>
+                                        <form method="post" action="edit/remove-faq">
                                             @csrf <!-- {{ csrf_field() }} -->
 
                                             <input type="text" name='faqID' value={{ $faq->faqID }} hidden>

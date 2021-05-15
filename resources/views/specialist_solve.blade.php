@@ -41,7 +41,7 @@
                             <div class="form-row">
                                 <div class="form-input textarea-input">
                                     {{-- <label>Description of problem</label> --}}
-                                    <input type="textarea" name="solution" value={{ $solution }} placeholder="Problem solution">
+                                    <input type="textarea" name="solution" value="{{ $solution }}" placeholder="Problem solution">
                                 </div>
                             </div>  
                             <div class="form-row">

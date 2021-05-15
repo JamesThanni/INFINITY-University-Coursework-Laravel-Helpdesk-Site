@@ -14,6 +14,11 @@ use App\Models\OS;
 use App\Models\Location;
 use App\Models\Solution;
 use App\Models\User;
+use App\Models\FAQ;
+use App\Models\Specialist;
+use App\Models\SoftwareSpecialist;
+use App\Models\HardwareSpecialist;
+
 
 class SpecialistController extends Controller
 {
@@ -174,6 +179,14 @@ class SpecialistController extends Controller
         $ticket['solutionID'] = $solutionID;
         $ticket['status'] = 'Pending';
         $ticket->save();
+
+        if($request['add-to-faq'] == 'on') {
+            $faq = new FAQ();
+            $faq['problem'] = $request->description;
+            $faq['solution'] = $request->solution;
+            $faq['SolutionID'] = $solutionID;
+            $faq->save();
+        } 
         
         return redirect('/specialist/dashboard/pending');
 
@@ -184,13 +197,53 @@ class SpecialistController extends Controller
     public function loadReassignPage(Request $request) {
         $chosenticket = new Ticket();
         $chosenticket->ticketID = $request->ticketID;
-        $ticket = Ticket::where('ticketID', $chosenticket->ticketID)->get();
+        $ticket = Ticket::where('ticketID', $chosenticket->ticketID)->get()[0];
 
+        // obj needs name, id, hardware spec, software spec
+        $array = [];
+        $specialistsUsers = User::where('userType', 'Specialist')->get();
+        foreach($specialistsUsers as $specialistsUser) {
+            
+            $specialist = Specialist::where('userID', $specialistsUser['userID'])->get()[0];
+
+            $softwareSpecialties = " ";
+            $specialistSoftware = SoftwareSpecialist::where('specID', $specialist->specID)->get();
+            foreach($specialistSoftware as $softwareSpecialty) {
+                $temp = Software::where('softID', $softwareSpecialty->softID)->get()[0]->softName;
+                $softwareSpecialties .= ($temp . " | ");
+            }
+
+            $hardwareSpecialties = " ";
+            $specialistHardware = HardwareSpecialist::where('specID', $specialist->specID)->get();
+            foreach($specialistHardware as $hardwareSpecialty) {
+                $temp = Hardware::where('serial_no', $hardwareSpecialty['serial_no'])->get()[0]->hardType;
+                $hardwareSpecialties .= ($temp . " | ");
+            }
+
+            $obj = [
+                'firstName' => $specialistsUser->firstName, 
+                'userID' => $specialistsUser->userID, 
+                'specID' => $specialist->specID, 
+                'softwareSpecialties' => $softwareSpecialties, 
+                'hardwareSpecialties' => $hardwareSpecialties
+            ];
+            array_push($array, $obj);
+        }
+
+        // return response()->json(array('success' => true, 'last_insert_id' => $array), 200);
 
         return view('specialist_reassign', [
             'ticketID' =>   $chosenticket->ticketID,
-            'desc' => $ticket[0]->description
+            'desc' => $ticket->description, 
+            'specialists' => $array
         ]);
+    }
+
+    public function submitReassignment(Request $request) {
+        $ticket = Ticket::find($request->ticketID);
+        $ticket['sepcID'] = $request->specID;
+        $ticket->save();
+        return redirect('/specialist/');
     }
 
     public function loadEditPage() {
@@ -210,7 +263,6 @@ class SpecialistController extends Controller
     }
 
     public function addHardware(Request $request) {
-
         $hardware = new Hardware();
         $hardware->serial_no = $request->serial_no;
         $hardware->hardType = $request->hardType;
@@ -222,6 +274,33 @@ class SpecialistController extends Controller
 
     public function removeHardware(Request $request) {
         Hardware::destroy($request->serial_no);
+        return redirect('/specialist/edit');
+    }
+
+    public function addFAQ(Request $request) {
+        // ADd solution, add FAQ
+        $solution = new Solution();
+        $solution['dateSolved'] = $request['dateSolved'];
+        $solution['timeSolved'] = $request['timeSolved'];
+        $solution['solutionDescription'] = $request['solution'];
+        
+        $user = User::where('userID', session()->get('userID'))->get()[0];
+        $solution['solutionSolver'] = $user->firstName;
+        $solutionID = rand(0, 100000000);
+        $solution['solutionID'] = $solutionID;
+        $solution->save();
+
+        $faq = new FAQ();
+        $faq['problem'] = $request['problem'];
+        $faq['solution'] = $request['solution'];
+        $faq['SolutionID'] = $solutionID;
+        $faq->save();
+
+        return redirect('/specialist/edit');
+    }
+
+    public function removeFAQ(Request $request) {
+        FAQ::destroy($request['faqID']);
         return redirect('/specialist/edit');
     }
     

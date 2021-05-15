@@ -149,7 +149,7 @@ class EmployeeController extends Controller
         $ticket['status'] = 'Unsolved';
         $ticket->save();
 
-        return redirect('/employee/tickets/unsolved');
+        return redirect('/employee/tickets/pending');
     }
 
     public function acceptTicket(Request $request) {
@@ -157,7 +157,7 @@ class EmployeeController extends Controller
         $ticket['status'] = 'Solved';
         $ticket->save();
 
-        return redirect('/employee/tickets/solved');
+        return redirect('/employee/tickets/pending');
     }
 
     

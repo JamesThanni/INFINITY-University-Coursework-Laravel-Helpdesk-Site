@@ -35,17 +35,20 @@
                         <p>Choose the specialist to assign to:</p>
                     </div>
                     <div class="content-box-row">
-                        <form class="content-form" action="">
+                        <form class="content-form" method="post" action="/specialist/reassign/submit">
+                            @csrf <!-- {{ csrf_field() }} -->
+
                             <div class="form-row">
                                 <div class="form-input dropdown-input">
                                     {{-- <label>Priority</label> --}}
-                                    <select name="" id="">
+                                    <select name="specID">
                                         <option value="" disabled selected>Select a specialist</option>
-                                        <option value="">Priority 1</option>
-                                        <option value="">Priority 2</option>
-                                        <option value="">Priority 3</option>
+                                        @foreach ($specialists as $s)
+                                            <option value="{{ $s['specID'] }}">({{ $s['specID'] }}) {{ $s['firstName'] }}: {{ $s['hardwareSpecialties'] }} {{ $s['softwareSpecialties'] }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
+                                <input type="text" value="{{ $ticketID }}" name="ticketID" hidden/>
                                 <button style="width: 100%" type="submit">Submit</button>
                             </div>    
                         </form>
