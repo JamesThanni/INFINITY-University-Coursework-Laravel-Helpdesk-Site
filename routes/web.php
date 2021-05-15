@@ -38,10 +38,12 @@ Route::get('/analyst/dashboard', [AnalystController::class, 'index']);
 
 Route::get('/specialist', [SpecialistController::class, 'index']);
 Route::get('/specialist/dashboard', [SpecialistController::class, 'index']);
-Route::get('/specialist/dashboard/display-tickets', [SpecialistController::class, 'displayTickets']);
+Route::get('/specialist/dashboard/unsolved', [SpecialistController::class, 'loadUnsolvedTickets']);
+Route::get('/specialist/dashboard/solved', [SpecialistController::class, 'loadSolvedTickets']);
+Route::get('/specialist/dashboard/pending', [SpecialistController::class, 'loadPendingTickets']);
 Route::get('/specialist/FAQ', [SpecialistController::class, 'loadFAQPage']);
-Route::get('/specialist/solve', [SpecialistController::class, 'loadSolvePage']);
 Route::get('/specialist/edit', [SpecialistController::class, 'loadEditPage']);
+Route::post('/specialist/solve', [SpecialistController::class, 'loadSolvePage']);
 Route::post('/specialist/edit/add-hardware', [SpecialistController::class, 'addHardware']);
 Route::post('/specialist/edit/remove-hardware', [SpecialistController::class, 'removeHardware']);
 
