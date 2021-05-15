@@ -12,4 +12,5 @@ class Solution extends Model
     public $timestamps = false;
     protected $table = 'Solutions';
     protected $primaryKey = 'solutionID';
+    public $incrementing = true;
 }

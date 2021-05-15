@@ -35,60 +35,44 @@
                         <p>Input Solution Below:</p>
                     </div>
                     <div class="content-box-row">
-                        <form class="content-form" action="">
+                        <form class="content-form" method="post" action="/specialist/solve/submit">
+                            @csrf
+
                             <div class="form-row">
                                 <div class="form-input textarea-input">
                                     {{-- <label>Description of problem</label> --}}
-                                    <input type="textarea" placeholder="Solution Name">
+                                    <input type="textarea" name="solution" value={{ $solution }} placeholder="Problem solution">
                                 </div>
                             </div>  
                             <div class="form-row">
                                 <div class="form-input textarea-input">
                                     {{-- <label>Description of problem</label> --}}
-                                    <input type="textarea" placeholder="Description">
+                                    <input type="textarea" value="{{ $desc }}" placeholder="Problem description" disabled />
+                                    <input type="textarea" value="{{ $desc }}" name="description" placeholder="Problem description" hidden />
                                 </div>
                             </div>  
                             <div class="form-row">
-                                <div class="form-input dropdown-input">
-                                    {{-- <label>Software used</label> --}}
-                                    <select name="" id="">
-                                        <option value="" disabled selected>Select your software</option>
-                                        <option value="">Software 1</option>
-                                        <option value="">Software 2</option>
-                                        <option value="">Software 3</option>
-                                    </select>
+                                <div class="form-input text-input">
+                                    <label>Software used</label>
+                                    <input type="text" value="{{ $softName }}" disabled/>
                                 </div>
-                                <div class="form-input dropdown-input">
-                                    {{-- <label>Operating system</label> --}}
-                                    <select name="" id="">
-                                        <option value="" disabled selected>Select your OS</option>
-                                        <option value="">OS 1</option>
-                                        <option value="">OS 2</option>
-                                        <option value="">OS 3</option>
-                                    </select>
+                                <div class="form-input text-input">
+                                    <label>Operating system</label>
+                                    <input type="text" value="{{ $osVersion }}" disabled/>
                                 </div>
                             </div>  
                             <div class="form-row">
-                                <div class="form-input dropdown-input">
-                                    {{-- <label>Problem type</label> --}}
-                                    <select name="" id="">
-                                        <option value="" disabled selected>Select your problem type</option>
-                                        <option value="">Problem Type 1</option>
-                                        <option value="">Problem Type 2</option>
-                                        <option value="">Problem Type 3</option>
-                                    </select>
+                                <div class="form-input text-input">
+                                    <label>Hardware</label>
+                                    <input type="text" value="{{ $hardType }}" disabled/>
                                 </div>
-                                <div class="form-input dropdown-input">
-                                    {{-- <label>Priority</label> --}}
-                                    <select name="" id="">
-                                        <option value="" disabled selected>Select your priority</option>
-                                        <option value="">Priority 1</option>
-                                        <option value="">Priority 2</option>
-                                        <option value="">Priority 3</option>
-                                    </select>
+                                <div class="form-input faq-checkbox-input">
+                                    <label>Add this solution to FAQs</label>
+                                    <input type="checkbox" name="add-to-faq">
                                 </div>
                             </div>    
                             <div class="form-row">
+                                <input type="text" value="{{ $ticketID }}" name="ticketID" hidden/>
                                 <button style="width: 100%" type="submit">Submit</button>
                             </div>   
                         </form>

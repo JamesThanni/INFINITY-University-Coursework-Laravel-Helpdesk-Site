@@ -323,6 +323,12 @@
         align-items: flex-start;
     }
 
+    .faq-checkbox-input {
+        align-items: center;
+        flex-direction: row !important;
+
+    }
+
     .button-input {
         justify-content: flex-end;
     }
@@ -330,6 +336,19 @@
     .checkbox-input input {
         min-width: 0;
         outline: 2px solid black;
+        
+    }
+
+    .faq-checkbox-input label {
+        order: 2;
+        margin-left: 1em;
+        margin-bottom: 0 !important;
+    }
+
+    .faq-checkbox-input input {
+        min-width: 0;
+        outline: 2px solid black;
+        order: 1;
     }
 
     .form-row .form-input:nth-last-child(1) {
@@ -510,6 +529,17 @@
             var input = e.target;
             var table = input.parentNode.parentNode.nextElementSibling.children[0];
             searchTable(e, index, table, input);
+        }
+
+        function submitFunc() {
+            var checkbox = document.querySelector('#faq-checkbox')
+            
+            if(checkbox.checked) {
+                return confirm('Are you sure you want to submit this ticket?')
+            } else {
+                alert('Confirm you have read');
+                return false
+            }
         }
         
     </script>

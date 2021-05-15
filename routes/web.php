@@ -44,6 +44,8 @@ Route::get('/specialist/dashboard/pending', [SpecialistController::class, 'loadP
 Route::get('/specialist/FAQ', [SpecialistController::class, 'loadFAQPage']);
 Route::get('/specialist/edit', [SpecialistController::class, 'loadEditPage']);
 Route::post('/specialist/solve', [SpecialistController::class, 'loadSolvePage']);
+Route::post('/specialist/solve/submit', [SpecialistController::class, 'submitSolution']);
+Route::post('/specialist/reassign', [SpecialistController::class, 'loadReassignPage']);
 Route::post('/specialist/edit/add-hardware', [SpecialistController::class, 'addHardware']);
 Route::post('/specialist/edit/remove-hardware', [SpecialistController::class, 'removeHardware']);
 

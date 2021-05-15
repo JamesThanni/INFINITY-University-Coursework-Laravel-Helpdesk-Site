@@ -6,15 +6,15 @@
         <nav id="side-nav">
             <div class="side-nav-item">
                 <i class="fa fa-phone red"></i>
-                <h3>Unsolved tickets </h3>
+                <a href="{{ url('specialist/dashboard/unsolved') }}"><h3>Unsolved tickets </h3></a>
             </div>
             <div class="side-nav-item">
                 <i class="fa fa-question blue"></i>
-                <h3>Pending tickets</h3>
+                <a href="{{ url('specialist/dashboard/pending') }}"><h3>Pending tickets</h3></a>
             </div>
             <div class="side-nav-item">
                 <i class="fa fa-square yellow"></i>
-                <h3>Solved tickets</h3>
+                <a href="{{ url('specialist/dashboard/solved') }}"><h3>Solved tickets</h3></a>
             </div>
         </nav>
 
@@ -24,24 +24,27 @@
                 <h1>My Tickets</h1>
 
             </div>
-            <div class="content-row">
+            
+            @if ($type == 'all')
+                <div class="content-row">
 
-                <div class="stat-box">
-                    <p>Assigned Tickets</p>
-                    <h3>{{ count($tickets) }}</h3>
+                    <div class="stat-box">
+                        <p>Assigned Tickets</p>
+                        <h3>{{ count($tickets) }}</h3>
+                    </div>
+
+                    <div class="stat-box">
+                        <p>Solved Tickets</p>
+                        <h3>{{ count($tickets) - count($unsolved) }}</h3>
+                    </div>
+
                 </div>
-
-                <div class="stat-box">
-                    <p>Solved Tickets</p>
-                    <h3>{{ count($tickets) - count($unsolved) }}</h3>
-                </div>
-
-            </div>
+            @endif
 
             <div class="content-row">
                 <div class="content-box">
                     <div class="top-row">
-                        <h2>Your tickets</h2>
+                        <h2>{{ $title }}</h2>
                         <div>
                             <input type="text" placeholder="please enter keyword"/>
                             <button>Filter By</button>
@@ -55,7 +58,9 @@
                                     @foreach ($fields as $field)
                                         <th>{{ $field }}</th>
                                     @endforeach
+                                    @if ($type == "unsolved" || $type == "all")
                                         <th>Interaction</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,21 +69,30 @@
                                         @foreach ($ticket as $info)                                    
                                         <td>{{ $info }}</td>                                        
                                         @endforeach
+                                        @if ($type == "unsolved" || $type == "all")
+                                            @if (strtolower(end($ticket)) == 'unsolved')
+                                                <td>
+                                                    <form class="content-form" method="post" action="/specialist/solve">
+                                                        @csrf
+                                                            
+                                                        <input name="ticketID" value={{ $ticket[0] }} hidden>
+                                                        <!-- <a href=" {{ url('specialist/solve') }}">Solve</a>  change form method and route method to get-->
+                                                        <button type="submit">Solve</button>
+                                                    </form>
 
-                                        @if (strtolower(end($ticket)) == 'unsolved')
-                                        <td>
-                                            <form class="content-form" method="post" action="specialist/solve">
-                                                @csrf
-                                                     
-                                                <input name="ticketID" value={{ $ticket[0] }} hidden>
-                                                <!-- <a href=" {{ url('specialist/solve') }}">Solve</a>  change form method and route method to get-->
-                                                <button type="submit">Solve</button>
-                                            </form>
-                                        </td>
-                                        
-                                        @else
-                                            <td></td>
-                                        @endif
+                                                    <form class="content-form" method="post" action="/specialist/reassign">
+                                                        @csrf
+                                                            
+                                                        <input name="ticketID" value={{ $ticket[0] }} hidden>
+                                                        <!-- <a href=" {{ url('specialist/reassign') }}">Solve</a>  change form method and route method to get-->
+                                                        <button type="submit">Reassign</button>
+                                                    </form>
+                                                </td>
+                                                
+                                                @else
+                                                    <td></td>
+                                                @endif
+                                            @endif
                                     </tr>
                                 @endforeach
                             </tbody>

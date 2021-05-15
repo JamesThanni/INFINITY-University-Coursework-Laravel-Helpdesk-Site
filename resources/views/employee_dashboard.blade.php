@@ -45,7 +45,7 @@
                         <p>Please input problem details:</p>
                     </div>
                     <div class="content-box-row">
-                        <form class="content-form" method="post" action="/employee/dashboard/add-ticket">
+                        <form class="content-form" method="post" action="/employee/dashboard/add-ticket" onsubmit="return submitFunc()">
                             @csrf <!-- {{ csrf_field() }} -->
 
                             <div class="form-row">
@@ -94,9 +94,9 @@
                                     {{-- <label>Priority</label> --}}
                                     <select name="priority" id="">
                                         <option value="" disabled selected>Select your priority</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
+                                        <option value="low">low</option>
+                                        <option value="medium">medium</option>
+                                        <option value="high">high</option>
                                     </select>
                                 </div>
                             </div>    
@@ -110,8 +110,14 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <button type="submit" style="width: 100%">Submit ticket</button>
-                            </div>    
+                                <div class="form-input faq-checkbox-input">
+                                    <label>I have checked the FAQ before submitting this problem</label>
+                                    <input type="checkbox" id="faq-checkbox" name="faq-read">
+                                </div>
+                            </div>   
+                            <div class="form-row">
+                                <button type="submit" id="employee-submit" style="width: 100%">Submit ticket</button>
+                            </div> 
                         </form>
                     </div>
                 </div>

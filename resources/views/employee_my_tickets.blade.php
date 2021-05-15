@@ -28,19 +28,22 @@
                 <h1>My Tickets</h1>
 
             </div>
+
+            @if ($type == 'all') 
             <div class="content-row">
 
                 <div class="stat-box">
-                    <p>Calls made:</p>
-                    <h3>6</h3>
+                    <p>Ticket count:</p>
+                    <h3>{{ count($tickets) }}</h3>
                 </div>
 
                 <div class="stat-box">
                     <p>Unsolved tickets:</p>
-                    <h3>2</h3>
+                    <h3>{{ count($tickets) - count($unsolved) }}</h3>
                 </div>
 
-            </div>
+            </div>  
+            @endif
 
             <div class="content-row">
                 <div class="content-box">
@@ -86,6 +89,30 @@
                                                 </form>
                                             </td>
                                         @endif
+
+                                        @if ($type == 'all')
+                                            @if ($ticket[4] == 'Pending')
+                                            <td>
+                                                <form method="post" action="/employee/tickets/pending/accept">
+                                                    @csrf <!-- {{ csrf_field() }} -->
+
+                                                    <input type="text" name='ticketID' value={{ $ticket[0] }} hidden>
+                                                    <button class="no-style" type="submit"><i class="fa fa-check-circle green"></i></button>
+                                                
+                                                </form>
+                                                <form method="post" action="/employee/tickets/pending/deny">
+                                                    @csrf <!-- {{ csrf_field() }} -->
+
+                                                    <input type="text" name='ticketID' value={{ $ticket[0] }} hidden>
+                                                    <button class="no-style" type="submit"><i class="fa fa-minus-circle" style="color:rgb(255, 58, 58)"></i></button>
+                                                
+                                                </form>
+                                            </td>
+                                            @else 
+                                                <td></td>
+                                            @endif
+                                        @endif
+                                        
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -35,23 +35,25 @@ class EmployeeController extends Controller
     public function loadTicketsPage(Request $request) {
         $empID = $request->session()->get('empID');
         $tickets = Ticket::where('empID', $empID)->get();
+        $unsolved = Ticket::where('empID', $empID)->where('status', 'Unsolved')->get();
         $output = array();
         foreach($tickets as $ticket ) {
             $solutions = Solution::where('solutionID', $ticket->solutionID)->get();
             if(count($solutions) > 0) {
                 $solution = $solutions[0];
-                $obj = [ $ticket->ticketID, $solution->dateSolved, $ticket->description, $solution->solutionDescription, $ticket->status ];
+                $obj = [ $ticket->ticketID, $ticket->dateCreated, $ticket->description, $solution->solutionDescription, $ticket->status ];
                 array_push($output, $obj);
             } else {
-                $obj = [ $ticket->ticketID, 'n/a', $ticket->description, 'Not solved yet', $ticket->status ];
+                $obj = [ $ticket->ticketID, $ticket->dateCreated, $ticket->description, 'Not solved yet', $ticket->status ];
                 array_push($output, $obj);
             }
         }
         return view('employee_my_tickets', [ 
             'tickets' => $output, 
-            'fields' => ['Ticket ID', 'Date Created', 'Description', 'Solution', 'Status'], 
-            'title' => 'Solved Tickets',
-            'type' => 'unsolved' 
+            'fields' => ['Ticket ID', 'Date Created', 'Description', 'Solution', 'Status', 'Interactions'], 
+            'title' => 'All Tickets',
+            'type' => 'all', 
+            'unsolved' => $unsolved
         ]);
     }
 
@@ -115,7 +117,7 @@ class EmployeeController extends Controller
         }
         return view('employee_my_tickets', [ 
             'tickets' => $output, 
-            'fields' => ['Ticket ID', 'Date Created', 'Description', 'Solution', 'Action'], 
+            'fields' => ['Ticket ID', 'Date Created', 'Description', 'Solution', 'Interaction'], 
             'title' => 'Solved Tickets', 
             'type' => 'pending' 
         ]);
@@ -147,7 +149,7 @@ class EmployeeController extends Controller
         $ticket['status'] = 'Unsolved';
         $ticket->save();
 
-        return redirect('/employee/tickets/pending');
+        return redirect('/employee/tickets/unsolved');
     }
 
     public function acceptTicket(Request $request) {
@@ -155,7 +157,7 @@ class EmployeeController extends Controller
         $ticket['status'] = 'Solved';
         $ticket->save();
 
-        return redirect('/employee/tickets/pending');
+        return redirect('/employee/tickets/solved');
     }
 
     
