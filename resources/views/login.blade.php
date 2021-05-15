@@ -4,6 +4,7 @@
         @section('page-content')
 
         <div class="login-box-container">
+                <i class="fa fa-wrench blue fa-3x"></i>
                 <h1>Make-It-All-Helpdesk</h1>
                 <form method="post" action="login/user">
                         @csrf <!-- {{ csrf_field() }} -->
