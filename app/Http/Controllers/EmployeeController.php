@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ticket;
+use App\Models\FAQ;
 use App\Models\Solution;
 use App\Http\Controllers\MainController;
 
@@ -14,17 +15,21 @@ class EmployeeController extends Controller
         $os = MainController::getOS();
         $hardware = MainController::getHardware();
         $software = MainController::getSoftware();
-
+        $faq = MainController::getFAQ();
         return view('employee_dashboard', [
             'software' => $software, 
             'os' => $os, 
             'hardware' => $hardware, 
-            'locations' => $locations
+            'locations' => $locations,            
+            'faq' => $faq
         ]);
     }
    
     public function loadFAQPage() {
-        return view('employee_FAQ');
+        $faq = MainController::getFAQ();
+        return view('employee_FAQ', [
+            'faq' => $faq,
+        ]);
     }
 
     public function loadTicketsPage(Request $request) {
@@ -45,7 +50,8 @@ class EmployeeController extends Controller
         return view('employee_my_tickets', [ 
             'tickets' => $output, 
             'fields' => ['Ticket ID', 'Date Created', 'Description', 'Solution', 'Status'], 
-            'title' => 'Solved Tickets' 
+            'title' => 'Solved Tickets',
+            'type' => 'unsolved' 
         ]);
     }
 
