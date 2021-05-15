@@ -260,6 +260,19 @@
     .content-box-row p {
         font-weight: bold;
     }
+
+    .faq-box-row {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: .5em;
+        border-radius: 2.5px; 
+        background:#161616; 
+        padding:1.5em 1em;
+    }
+
+    .faq-box-row h4 {
+        font-weight: bold;
+    }
     
     #divided-content {
         background-color: #161616;
