@@ -261,6 +261,29 @@
         font-weight: bold;
     }
 
+    .employee-faq {
+        overflow-y: scroll; 
+        max-height: 150px;
+    }
+
+    .employee-faq::-webkit-scrollbar-track
+    {
+        border: 1px solid #161616;
+        background-color: #F5F5F5;
+    }
+
+    .employee-faq::-webkit-scrollbar
+    {
+        width: 10px;
+        background-color: #F5F5F5;
+    }
+
+    .employee-faq::-webkit-scrollbar-thumb
+    {
+        background-color:  #03fcb1;	
+    }
+
+
     .faq-box-row {
         display: flex;
         flex-direction: column;

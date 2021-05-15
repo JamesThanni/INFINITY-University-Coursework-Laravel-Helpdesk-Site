@@ -22,16 +22,17 @@
             </div>
         </nav> --}}
         <div id="main-content" class="scroll">
+            
             <div class="content-row">
-
+            
                 <div class="content-box">
                     <div class="top-row">
-                        <h2>Solution to ticket #101</h2>
-                        <h4 class="turquoise">Windows wont boot after installing Intel HD graphics Drivers</h4>
+                        <h2>Solution to ticket #{{ $ticketID }}</h2>
+                        <h4 class="turquoise">{{  $desc }}</h4>
                     </div>
 
                     <div class="content-box-row">
-                        <p>Please input problem details:</p>
+                        <p>Input Solution Below:</p>
                     </div>
                     <div class="content-box-row">
                         <form class="content-form" action="">

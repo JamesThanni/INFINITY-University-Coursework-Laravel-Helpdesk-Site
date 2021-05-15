@@ -19,51 +19,26 @@
                 <h1>FAQ</h1>
             </div>
             <div class="content-row">
-            
+           
                 <div class="content-box">
                     <div class="top-row">
-                        <h3>Find common problems</h3>
+                        <h2>Find common problems</h2>
                     </div>
 
                     
                     
-                        @foreach ($faq as $commonSolution)
-                        <div class="faq-box-row">
-                            <h4 class="turquoise">{{$commonSolution->problem}}</h4>
-                            <p>{{$commonSolution->solution}}</p>
-                        </div>
-                        @endforeach
+                    @foreach ($faq as $commonSolution)
+                    <div class="faq-box-row">
+                        <h4 class="turquoise">{{$commonSolution->problem}}</h4>
+                        <p>{{$commonSolution->solution}}</p>
+                    </div>
+                    @endforeach
                         
                    
                 </div>
-
+        
             </div>
-        <!--
-            <div class="content-row">
-
-                
-            </div>
-  
-            
-            <div class="content-row">
-                <div class="context-box">
-                    <div class="top-row">
-                        
-                    </div>
-                    
-                    <div class="content-box-row">
-                    @foreach ($faq as $commonSolution)
-                        
-                        <h4 class="turquoise">{{$commonSolution->problem}}</h4>
-                        <p>{{$commonSolution->solution}}</p>
-                    
-                    
-                    @endforeach
-                    </div>
-                        
-                </div>
-            </div>
-        -->
+       
         </div>
         
 

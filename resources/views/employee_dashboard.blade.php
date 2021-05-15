@@ -22,6 +22,14 @@
                         <h2>FAQ</h2>
                         <input placeholder="search FAQ" type="text" />
                     </div>
+                    <div class="employee-faq">
+                        @foreach ($faq as $commonSolution)
+                        <div class="faq-box-row">
+                            <h4 class="turquoise">{{$commonSolution->problem}}</h4>
+                            <p>{{$commonSolution->solution}}</p>
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
 

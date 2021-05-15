@@ -27,13 +27,13 @@
             <div class="content-row">
 
                 <div class="stat-box">
-                    <p>Calls made:</p>
-                    <h3>6</h3>
+                    <p>Assigned Tickets</p>
+                    <h3>{{ count($tickets) }}</h3>
                 </div>
 
                 <div class="stat-box">
-                    <p>Unsolved tickets:</p>
-                    <h3>2</h3>
+                    <p>Solved Tickets</p>
+                    <h3>{{ count($tickets) - count($unsolved) }}</h3>
                 </div>
 
             </div>
@@ -52,29 +52,38 @@
                         <table class="table scroll">
                             <thead>
                                 <tr>
-                                    <th>Date</th>
-                                    <th>ID</th>
-                                    <th>Title</th>
-                                    <th>Type</th>
-                                    <th>Status</th>
-                                    <th>Priority</th>
-                                    <th>Actions</th>
+                                    @foreach ($fields as $field)
+                                        <th>{{ $field }}</th>
+                                    @endforeach
+                                        <th>Interaction</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td>1324</td>
-                                    <td><i class="fa fa-edit yellow"></i></td>
-                                </tr>
-        
+                                @foreach ($tickets as $ticket)
+                                    <tr>
+                                        @foreach ($ticket as $info)                                    
+                                        <td>{{ $info }}</td>                                        
+                                        @endforeach
+
+                                        @if (strtolower(end($ticket)) == 'unsolved')
+                                        <td>
+                                            <form class="content-form" method="post" action="specialist/solve">
+                                                @csrf
+                                                     
+                                                <input name="ticketID" value={{ $ticket[0] }} hidden>
+                                                <!-- <a href=" {{ url('specialist/solve') }}">Solve</a>  change form method and route method to get-->
+                                                <button type="submit">Solve</button>
+                                            </form>
+                                        </td>
+                                        
+                                        @else
+                                            <td></td>
+                                        @endif
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
-                    </div>
+                    
 
                 </div>
             </div>

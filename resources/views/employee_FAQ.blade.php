@@ -25,10 +25,22 @@
         <div id="main-content" class="scroll">
             <div class="content-row">
 
-                <h1>FAQ</h1>
-                
-                @include('analyst_page')
+                <div class="content-box">
+                    <div class="top-row">
+                        <h2>Find common problems</h2>
+                    </div>
 
+                    
+                    
+                    @foreach ($faq as $commonSolution)
+                    <div class="faq-box-row">
+                        <h4 class="turquoise">{{$commonSolution->problem}}</h4>
+                        <p>{{$commonSolution->solution}}</p>
+                    </div>
+                    @endforeach
+                        
+                   
+                </div>
             </div>
         
         </div>
