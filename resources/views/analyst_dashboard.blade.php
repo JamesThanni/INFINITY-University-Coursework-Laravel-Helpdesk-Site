@@ -68,14 +68,6 @@
                         
                     </div> 
                 </div>
-                <div class="content-box">
-                    <div class="top-row">
-                        <h2>Test</h2>
-                    </div>
-                    <div class="content-box-row" id="test">
-                        
-                    </div> 
-                </div>
 
             </div>
         

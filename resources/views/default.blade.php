@@ -532,7 +532,6 @@
             searchTable(e, index, table, input);
         }
 
-<<<<<<< HEAD
         function submitFunc() {
             var checkbox = document.querySelector('#faq-checkbox')
             
@@ -544,11 +543,12 @@
             }
         }
         
-=======
         // Code for graphs in analyst page //
 
         google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(compareQueryStatuses);
         google.charts.setOnLoadCallback(showEquipmentStats);
+        google.charts.setOnLoadCallback(compareTodayYesterday);
         // Replace with function that calls all the graph functions at once
 
         function showEquipmentStats(){
@@ -677,7 +677,6 @@
             chart.draw(data, options);
         }
 
->>>>>>> d9caf2b98de81a5f5b9ede14653d8219fd9daf52
     </script>
 
 </body>
