@@ -29,7 +29,7 @@
 
     .scroll::-webkit-scrollbar-thumb
     {
-        background-color:  #03fcb1;	
+        background-color:  #03fcb1;
     }
 
     /* https://stackoverflow.com/questions/62162645/change-color-of-chromes-calendar-icon-in-html-date-input */
@@ -49,7 +49,7 @@
     }
 
     h1, h2, h3, h4, h5, p, a, input, select, table, button, textarea, label {
-        font-family: 'Nunito Sans', sans-serif; 
+        font-family: 'Nunito Sans', sans-serif;
         color: white;
         font-weight: 100;
     }
@@ -262,7 +262,7 @@
     }
 
     .employee-faq {
-        overflow-y: scroll; 
+        overflow-y: scroll;
         max-height: 150px;
     }
 
@@ -280,7 +280,7 @@
 
     .employee-faq::-webkit-scrollbar-thumb
     {
-        background-color:  #03fcb1;	
+        background-color:  #03fcb1;
     }
 
 
@@ -288,19 +288,19 @@
         display: flex;
         flex-direction: column;
         margin-bottom: .5em;
-        border-radius: 2.5px; 
-        background:#161616; 
+        border-radius: 2.5px;
+        background:#161616;
         padding:1.5em 1em;
     }
 
     .faq-box-row h4 {
         font-weight: bold;
     }
-    
+
     #divided-content {
         background-color: #161616;
     }
-    
+
     .content-form {
         width: 100%;
     }
@@ -316,7 +316,7 @@
         display: flex;
         flex-direction: column;
         min-width: 50%;
-        padding-right: 1em; 
+        padding-right: 1em;
     }
 
     .checkbox-input {
@@ -376,7 +376,7 @@
     }
 
     .table td {
-        padding: 20px 10px; 
+        padding: 20px 10px;
         width: 100%;
         font-size: 12px;
         opacity: .75;
@@ -427,7 +427,7 @@
         margin-left: 1em;
     }
 
-    
+
     @media (max-width: 1200px) {
         .wrapper {
             grid-template-areas:
@@ -455,7 +455,7 @@
             align-items: center;
             padding: 1em;
         }
-        
+
 
         #main-content {
             padding: 0 2vw;
@@ -481,6 +481,7 @@
     <p>User ID: {{ (session('userID')) }}</p>
     @yield('page-content')
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
         // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_table
         function searchTable(e, index, table, input) {
@@ -496,7 +497,7 @@
                 } else {
                     tr[i].style.display = "none";
                 }
-                }       
+                }
             }
         }
 
@@ -511,7 +512,139 @@
             var table = input.parentNode.parentNode.nextElementSibling.children[0];
             searchTable(e, index, table, input);
         }
-        
+
+        // Code for graphs in analyst page //
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(showEquipmentStats);
+        // Replace with function that calls all the graph functions at once
+
+        function showEquipmentStats(){
+            // Shows the most faulty software in a bar chart then places the graph
+            // inside a div on the analyst page
+            var data = google.visualization.arrayToDataTable([
+                ['Software', 'Number of queries in the last week'],
+                ['Microsoft Word', 10],
+                ['Microsoft Excel', 8],
+                ['Microsoft Powerpoint', 5],
+                ['PhpStorm', 2,],
+                ['Microsoft Teams', 19],
+            ]);
+
+            var options = {
+                'hAxis': {
+                    'title': 'Software',
+                    'titleTextStyle': {
+                        'color': '#FFFFFF',
+                        'fontSize': 20,
+                        'fontName': 'Arial',
+                        'italic': false
+                    },
+                    'textStyle': {
+                        color: '#FFFFFF'
+                    },
+                },
+                'vAxis': {
+                    'title': 'Number of queries',
+                    'titleTextStyle': {
+                        'color': '#FFFFFF',
+                        'fontSize': 20,
+                        'fontName': 'Arial',
+                        'italic': false
+                    },
+                    'textStyle': {
+                        color: '#FFFFFF'
+                    },
+                },
+                'colors' : ['#4CECFF'],
+                'width':'75%',
+                'height':500,
+                'backgroundColor': '#1C1C1C',
+                'bar': {
+                    'groupWidth': "70%"
+                }
+            }
+
+            chart = new google.visualization.BarChart(document.getElementById('most-faulty-software'));
+            chart.draw(data, options);
+        }
+
+        function compareQueryStatuses() {
+            // Used to show how many problems have been solved, are still
+            // waiting assignment or waiting for a solution from a specialist
+            // in a pie chart
+            var data = google.visualization.arrayToDataTable([
+                ['Status', 'Number'],
+                ['Solved', 24],
+                ['Pending', 30],
+                ['Unsolved', 16],
+            ]);
+
+            // Set chart options
+            var options = {'text':['Status of queries', 'In the last week'],
+                'subtitle':'In the last week',
+                'colors': ['#A7FD91', '#FFF385', '#FA7577'],
+                'backgroundColor': '#1C1C1C',
+                'width':'75%',
+                'height':'100%',
+                'legend': 'none',
+            };
+
+            // Will instantiate the chart
+            chart = new google.visualization.PieChart(document.getElementById('live-problem-status'));
+            // Draws the graph while passing in the options
+            chart.draw(data, options);
+        }
+
+        function compareTodayYesterday() {
+            // Used to show the number of queries solved by analysts on
+            // the current day compared to the number solved yesterday
+            var data = google.visualization.arrayToDataTable([
+                ['Days', 'Number'],
+                ['17/05', 24],
+                ['18/05', 30],
+            ]);
+
+            // Set chart options
+            var options = {
+                'hAxis': {
+                    'title': 'Days',
+                    'titleTextStyle': {
+                        'color': '#FFFFFF',
+                        'fontSize': 20,
+                        'fontName': 'Arial',
+                        'italic': false
+                    },
+                    'textStyle': {
+                        color: '#FFFFFF'
+                    },
+                },
+                'vAxis': {
+                    'title': 'Number of solved queries',
+                    'titleTextStyle': {
+                        'color': '#FFFFFF',
+                        'fontSize': 20,
+                        'fontName': 'Arial',
+                        'italic': false,
+                    },
+                    'textStyle': {
+                        color: '#FFFFFF'
+                    },
+                    'minValue': 0
+                },
+                'colors' : ['#A7FD91'],
+                'width':'80%',
+                'height':500,
+                'backgroundColor': '#1C1C1C',
+                'bar': {
+                    'groupWidth': "70%"
+                }
+            }
+
+            chart = new google.visualization.ColumnChart(document.getElementById('today-vs-yesterday'));
+            chart.draw(data, options);
+        }
+
     </script>
 
 </body>
