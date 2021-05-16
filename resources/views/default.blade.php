@@ -666,7 +666,7 @@
                 },
                 'colors' : ['#A7FD91'],
                 'width':'80%',
-                'height':500,
+                'height':'80%',
                 'backgroundColor': '#1C1C1C',
                 'bar': {
                     'groupWidth': "70%"
