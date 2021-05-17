@@ -93,14 +93,14 @@
                                         @if ($type == 'all')
                                             @if ($ticket[4] == 'Pending')
                                             <td>
-                                                <form method="post" action="dashboard/pending/accept">
+                                                <form method="post" action="tickets/pending/accept">
                                                     @csrf <!-- {{ csrf_field() }} -->
 
                                                     <input type="text" name='ticketID' value={{ $ticket[0] }} hidden>
                                                     <button class="no-style" type="submit"><i class="fa fa-check-circle green"></i></button>
                                                 
                                                 </form>
-                                                <form method="post" action="dashboard/pending/deny">
+                                                <form method="post" action="tickets/pending/deny">
                                                     @csrf <!-- {{ csrf_field() }} -->
 
                                                     <input type="text" name='ticketID' value={{ $ticket[0] }} hidden>
