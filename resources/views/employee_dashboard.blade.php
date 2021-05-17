@@ -45,7 +45,7 @@
                         <p>Please input problem details:</p>
                     </div>
                     <div class="content-box-row">
-                        <form class="content-form" method="post" action="/employee/dashboard/add-ticket" onsubmit="return submitFunc()">
+                        <form class="content-form" method="post" action="employee/dashboard/add-ticket" onsubmit="return submitFunc()">
                             @csrf <!-- {{ csrf_field() }} -->
 
                             <div class="form-row">

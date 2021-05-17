@@ -544,7 +544,7 @@
         }
         
         // Code for graphs in analyst page //
-
+        
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(compareQueryStatuses);
         google.charts.setOnLoadCallback(showEquipmentStats);

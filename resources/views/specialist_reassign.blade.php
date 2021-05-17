@@ -35,7 +35,7 @@
                         <p>Choose the specialist to assign to:</p>
                     </div>
                     <div class="content-box-row">
-                        <form class="content-form" method="post" action="/specialist/reassign/submit">
+                        <form class="content-form" method="post" action="specialist/reassign/submit">
                             @csrf <!-- {{ csrf_field() }} -->
 
                             <div class="form-row">

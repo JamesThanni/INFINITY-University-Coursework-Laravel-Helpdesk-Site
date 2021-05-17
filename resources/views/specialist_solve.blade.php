@@ -35,7 +35,7 @@
                         <p>Input Solution Below:</p>
                     </div>
                     <div class="content-box-row">
-                        <form class="content-form" method="post" action="/specialist/solve/submit">
+                        <form class="content-form" method="post" action="specialist/solve/submit">
                             @csrf
 
                             <div class="form-row">
