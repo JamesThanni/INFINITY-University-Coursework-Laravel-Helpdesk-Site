@@ -560,7 +560,7 @@
           
         }
         
-        // Code for graphs i   n analyst page //
+        // Code for graphs in analyst page //
         
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(compareQueryStatuses);
@@ -582,6 +582,7 @@
             ]);
 
             var options = {
+                'legend': 'none',
                 'hAxis': {
                     'title': 'Software',
                     'titleTextStyle': {
@@ -608,7 +609,7 @@
                 },
                 'colors' : ['#4CECFF'],
                 'width':'100%',
-                'height':500,
+                'height':500px,
                 'backgroundColor': '#1C1C1C',
                 'bar': {
                     'groupWidth': "70%"
@@ -636,7 +637,7 @@
                 'colors': ['#A7FD91', '#FFF385', '#FA7577'],
                 'backgroundColor': '#1C1C1C',
                 'width':'100%',
-                'height':'100%',
+                'height': 500px,
                 'legend': 'none',
             };
 
@@ -657,6 +658,7 @@
 
             // Set chart options
             var options = {
+                'legend': 'none',
                 'hAxis': {
                     'title': 'Days',
                     'titleTextStyle': {
@@ -684,7 +686,7 @@
                 },
                 'colors' : ['#A7FD91'],
                 'width':'100%',
-                'height':'100%',
+                'height': 500px,
                 'backgroundColor': '#1C1C1C',
                 'bar': {
                     'groupWidth': "70%"
@@ -735,8 +737,8 @@
 							},
 						},
 						'colors' : ['#4CECFF'],
-						'width':'100%',
-						'height':'100%',
+						'width': 500px,
+						'height': 500px ,
 						'backgroundColor': '#1C1C1C',
 						'bar': {
 							'groupWidth': "70%"
