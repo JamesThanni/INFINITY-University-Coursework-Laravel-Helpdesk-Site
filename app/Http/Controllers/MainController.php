@@ -35,14 +35,14 @@ class MainController extends Controller
                     $specialist = Specialist::where('userID', $userID)
                                         ->get(); 
                     $request->session()->put('specID', $specialist[0]->specID);
-                    return redirect('/specialist');
+                    return redirect('/specialist/dashboard');
                     break;
                     
                 case 'Employee':
                     $employee = Employee::where('userID', $userID)
                                         ->get(); 
                     $request->session()->put('empID', $employee[0]->empID);
-                    return redirect('/employee');
+                    return redirect('/employee/dashboard');
                     break;
 
                 case 'Analyst':
