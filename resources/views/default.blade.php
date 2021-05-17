@@ -8,7 +8,7 @@
     <title>Make-It-All Helpdesk</title>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
-     /* https://codepen.io/GhostRider/pen/GHaFw */
+     
 
     .scroll {
         overflow-y: scroll;
@@ -32,7 +32,7 @@
         background-color:  #03fcb1;
     }
 
-    /* https://stackoverflow.com/questions/62162645/change-color-of-chromes-calendar-icon-in-html-date-input */
+  
     ::-webkit-calendar-picker-indicator {
         filter: invert(1);
     }
@@ -508,7 +508,6 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
-        // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_table
         function searchTable(e, index, table, input) {
             var filter, tr, td, i, txtValue;
             filter = input.value.toUpperCase();
