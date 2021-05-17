@@ -159,7 +159,7 @@ class EmployeeController extends Controller
         return view('employee_my_tickets', [ 
             'tickets' => $output, 
             'fields' => ['Ticket ID', 'Date Created', 'Description', 'Solution', 'Interaction'], 
-            'title' => 'Solved Tickets', 
+            'title' => 'Pending Tickets', 
             'type' => 'pending' 
         ]);
     }
