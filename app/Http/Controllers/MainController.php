@@ -17,9 +17,9 @@ use App\Models\FAQ;
 class MainController extends Controller
 {
     public function index() {
-        $users = User::all();
-
-        return view('login', [ 'users' => [] ]);
+        $users = User::all()->toJson();
+                
+        return view('login', ['users' => $users]);
     }
 
     public function login(Request $request) {
@@ -35,14 +35,14 @@ class MainController extends Controller
                     $specialist = Specialist::where('userID', $userID)
                                         ->get(); 
                     $request->session()->put('specID', $specialist[0]->specID);
-                    return redirect('/specialist/dashboard');
+                    return redirect('/specialist');
                     break;
                     
                 case 'Employee':
                     $employee = Employee::where('userID', $userID)
                                         ->get(); 
                     $request->session()->put('empID', $employee[0]->empID);
-                    return redirect('/employee/dashboard');
+                    return redirect('/employee');
                     break;
 
                 case 'Analyst':
