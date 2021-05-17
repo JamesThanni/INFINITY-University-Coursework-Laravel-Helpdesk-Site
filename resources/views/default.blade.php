@@ -434,8 +434,13 @@
 
     .login-box-container form {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
+
+    .login-box-container input  {
+        margin-bottom: 1em;
+    }
+
 
     .links {
         display: flex;
@@ -497,7 +502,8 @@
     </style>
 </head>
 <body>
-    <p>User ID: {{ (session('userID')) }}</p>
+    <!--
+    <p>User ID: {{ (session('userID')) }}</p>-->
     @yield('page-content')
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -542,8 +548,20 @@
                 return false
             }
         }
+
+        function loginValidation() {
+            var emailInput = document.querySelector("#email");
+            var passwordInput = document.querySelector("#password");
+
+            // check if empty
+            if (emailInput.value == "" || passwordInput.value == "") {
+                alert("Email or password is blank");
+                return false;
+            }
+          
+        }
         
-        // Code for graphs in analyst page //
+        // Code for graphs i   n analyst page //
         
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(compareQueryStatuses);
