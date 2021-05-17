@@ -567,6 +567,7 @@
         google.charts.setOnLoadCallback(compareQueryStatuses);
         google.charts.setOnLoadCallback(showEquipmentStats);
         google.charts.setOnLoadCallback(compareTodayYesterday);
+        google.charts.setOnLoadCallback(averageTicketCompletionTime);
         // Replace with function that calls all the graph functions at once
 
         function showEquipmentStats(){
@@ -694,6 +695,57 @@
             chart = new google.visualization.ColumnChart(document.getElementById('today-vs-yesterday'));
             chart.draw(data, options);
         }
+        
+        function averageTicketCompletionTime(){
+					// Shows the average time taken by each specialist to
+					// complete a ticket compared to the average time
+					var data = google.visualization.arrayToDataTable([
+						['Specialists', 'Average time to solve a ticket (hours)'],
+						['Average', 6.5],
+						['1 - Grayson', 4.3],
+						['3 - Doe', 7.0],
+						['458271 - Thatcher', 9.1],
+						['432897 - Mann', 8.2],
+						['573828 - Sato', 4.8],
+						['98491 - Heria', 5.6]
+					]);
+					var options = {
+						'legend': 'none',
+						'hAxis': {
+							'title': 'Average time to solve a ticket (hours)',
+							'titleTextStyle': {
+								'color': '#FFFFFF',
+								'fontSize': 20,
+								'fontName': 'Arial',
+								'italic': false
+							},
+							'textStyle': {
+								color: '#FFFFFF'
+							},
+						},
+						'vAxis': {
+							'title': 'Specialists',
+							'titleTextStyle': {
+								'color': '#FFFFFF',
+								'fontSize': 20,
+								'fontName': 'Arial',
+								'italic': false
+							},
+							'textStyle': {
+								color: '#FFFFFF'
+							},
+						},
+						'colors' : ['#4CECFF'],
+						'width':'75%',
+						'height':500,
+						'backgroundColor': '#1C1C1C',
+						'bar': {
+							'groupWidth': "70%"
+						}
+					}
+					chart = new google.visualization.BarChart(document.getElementById('solving-tickets'));
+					chart.draw(data, options);
+				}
 
     </script>
 
