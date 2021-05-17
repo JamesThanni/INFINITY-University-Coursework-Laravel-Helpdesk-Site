@@ -25,7 +25,7 @@ class SpecialistController extends Controller
     public function index(Request $request) {
         $specID = $request->session()->get('specID');
         $tickets = Ticket::where('sepcID', $specID)->get();
-        $unsolved = Ticket::where('sepcID', $specID)->where('status', "unsolved")->get();
+        $unsolved = Ticket::where('sepcID', $specID)->where('status', "!=", "solved")->get();
         $output = array();
         foreach($tickets as $ticket ) {
             $solutions = Solution::where('solutionID', $ticket->solutionID)->get();
