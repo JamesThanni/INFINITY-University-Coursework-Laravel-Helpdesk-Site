@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Ticket;
-use App\Models\FAQ;
+use App\Models\Hardware;
+use App\Models\Software;
+use App\Models\OS;
+use App\Models\Location;
 use App\Models\Solution;
+use App\Models\User;
+use App\Models\FAQ;
+use App\Models\Specialist;
+use App\Models\SoftwareSpecialist;
+use App\Models\HardwareSpecialist;
+use App\Models\Ticket;
 use App\Http\Controllers\MainController;
 
 class EmployeeController extends Controller
@@ -16,12 +24,45 @@ class EmployeeController extends Controller
         $hardware = MainController::getHardware();
         $software = MainController::getSoftware();
         $faq = MainController::getFAQ();
+
+        // obj needs name, id, hardware spec, software spec
+        $array = [];
+        $specialistsUsers = User::where('userType', 'Specialist')->get();
+        foreach($specialistsUsers as $specialistsUser) {
+            
+            $specialist = Specialist::where('userID', $specialistsUser['userID'])->get()[0];
+
+            $softwareSpecialties = " ";
+            $specialistSoftware = SoftwareSpecialist::where('specID', $specialist->specID)->get();
+            foreach($specialistSoftware as $softwareSpecialty) {
+                $temp = Software::where('softID', $softwareSpecialty->softID)->get()[0]->softName;
+                $softwareSpecialties .= ($temp . " | ");
+            }
+
+            $hardwareSpecialties = " ";
+            $specialistHardware = HardwareSpecialist::where('specID', $specialist->specID)->get();
+            foreach($specialistHardware as $hardwareSpecialty) {
+                $temp = Hardware::where('serial_no', $hardwareSpecialty['serial_no'])->get()[0]->hardType;
+                $hardwareSpecialties .= ($temp . " | ");
+            }
+
+            $obj = [
+                'firstName' => $specialistsUser->firstName, 
+                'userID' => $specialistsUser->userID, 
+                'specID' => $specialist->specID, 
+                'softwareSpecialties' => $softwareSpecialties, 
+                'hardwareSpecialties' => $hardwareSpecialties
+        ];
+            array_push($array, $obj);
+        }
+
         return view('employee_dashboard', [
             'software' => $software, 
             'os' => $os, 
             'hardware' => $hardware, 
             'locations' => $locations,            
-            'faq' => $faq
+            'faq' => $faq, 
+            'specialists' => $array
         ]);
     }
    
@@ -137,7 +178,7 @@ class EmployeeController extends Controller
         $ticket['priority'] = $request->priority;
         $ticket['locationID'] = $request->locationID;
         $ticket['solutionID'] = null;
-        $ticket['sepcID'] = 2;
+        $ticket['sepcID'] = $request->specID;
         $ticket['status'] = 'Unsolved';
         $ticket->save();
 

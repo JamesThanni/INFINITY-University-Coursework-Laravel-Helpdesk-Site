@@ -110,6 +110,17 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="form-input dropdown-input">
+                                    {{-- <label>Specialist</label> --}}
+                                    <select name="specID" id="">
+                                        <option value="" disabled selected>Select a specialist</option>
+                                       @foreach ($specialists as $s)
+                                            <option value="{{ $s['specID'] }}">({{ $s['specID'] }}) {{ $s['firstName'] }}: {{ $s['hardwareSpecialties'] }} {{ $s['softwareSpecialties'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>   
+                            <div class="form-row">
                                 <div class="form-input faq-checkbox-input">
                                     <label>I have checked the FAQ before submitting this problem</label>
                                     <input type="checkbox" id="faq-checkbox" name="faq-read">
