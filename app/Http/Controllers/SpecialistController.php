@@ -243,7 +243,7 @@ class SpecialistController extends Controller
         $ticket = Ticket::find($request->ticketID);
         $ticket['sepcID'] = $request->specID;
         $ticket->save();
-        return redirect('/specialist/');
+        return redirect('/specialist/dashboard');
     }
 
     public function loadEditPage() {
