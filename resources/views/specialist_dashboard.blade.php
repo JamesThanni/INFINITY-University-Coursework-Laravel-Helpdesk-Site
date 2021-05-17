@@ -72,7 +72,7 @@
                                         @if ($type == "unsolved" || $type == "all")
                                             @if (strtolower(end($ticket)) == 'unsolved')
                                                 <td>
-                                                    <form class="content-form" method="post" action="dashboard/solve">
+                                                    <form class="content-form" method="post" action="solve">
                                                         @csrf
                                                             
                                                         <input name="ticketID" value={{ $ticket[0] }} hidden>
@@ -80,7 +80,7 @@
                                                         <button type="submit">Solve</button>
                                                     </form>
 
-                                                    <form class="content-form" method="post" action="dashboard/reassign">
+                                                    <form class="content-form" method="post" action="reassign">
                                                         @csrf
                                                             
                                                         <input name="ticketID" value={{ $ticket[0] }} hidden>
