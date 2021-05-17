@@ -22,7 +22,6 @@ Route::get('/login', [MainController::class, 'index']);
 Route::post('/login/user', [MainController::class, 'login']);
 Route::get('/logout', [MainController::class, 'logout']);
 
-Route::get('/employee', [EmployeeController::class, 'index']);
 Route::get('/employee/dashboard', [EmployeeController::class, 'index']);
 Route::post('/employee/dashboard/add-ticket', [EmployeeController::class, 'addTicket']);
 Route::get('/employee/FAQ', [EmployeeController::class, 'loadFAQPage']);
@@ -36,7 +35,6 @@ Route::post('/employee/tickets/pending/accept', [EmployeeController::class, 'acc
 Route::get('/analyst', [AnalystController::class, 'index']);
 Route::get('/analyst/dashboard', [AnalystController::class, 'index']);
 
-Route::get('/specialist', [SpecialistController::class, 'index']);
 Route::get('/specialist/dashboard', [SpecialistController::class, 'index']);
 Route::get('/specialist/dashboard/unsolved', [SpecialistController::class, 'loadUnsolvedTickets']);
 Route::get('/specialist/dashboard/solved', [SpecialistController::class, 'loadSolvedTickets']);
