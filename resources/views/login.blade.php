@@ -9,7 +9,7 @@
                 <form method="post" action="login/user" onsubmit="return loginValidation();">
                         @csrf <!-- {{ csrf_field() }} -->
                         <input id="email" type="text" name="email" placeholder="Email">
-                        <input id="password" type="text" name="password" placeholder="Password">
+                        <input id="password" type="password" name="password" placeholder="Password">
                         <button type="submit">Submit</button>
                 </form>
 
