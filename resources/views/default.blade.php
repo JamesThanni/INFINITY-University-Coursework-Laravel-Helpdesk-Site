@@ -607,7 +607,7 @@
                         color: '#FFFFFF'
                     },
                 },
-                'colors' : ['#4CECFF'],
+                'colors' : ['#03fcb1'],
                 'width':'40%',
                 'height':'40%',
                 'backgroundColor': '#1C1C1C',
@@ -736,7 +736,7 @@
 								color: '#FFFFFF'
 							},
 						},
-						'colors' : ['#4CECFF'],
+						'colors' : ['#03fcb1'],
 						'width':'40%',
                         'height':'40%',
 						'backgroundColor': '#1C1C1C',
