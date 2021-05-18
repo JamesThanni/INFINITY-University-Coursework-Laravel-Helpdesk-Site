@@ -609,7 +609,7 @@
                 },
                 'colors' : ['#4CECFF'],
                 'width':'40%',
-                'height':150,
+                'height':'40%',
                 'backgroundColor': '#1C1C1C',
                 'bar': {
                     'groupWidth': "70%"
@@ -637,7 +637,7 @@
                 'colors': ['#A7FD91', '#FFF385', '#FA7577'],
                 'backgroundColor': '#1C1C1C',
                 'width':'40%',
-                'height':150,
+                'height':'40%',
                 'legend': 'none',
             };
 
@@ -686,7 +686,7 @@
                 },
                 'colors' : ['#A7FD91'],
                 'width':'40%',
-                'height':150,
+                'height':'40%',
                 'backgroundColor': '#1C1C1C',
                 'bar': {
                     'groupWidth': "70%"
@@ -738,7 +738,7 @@
 						},
 						'colors' : ['#4CECFF'],
 						'width':'40%',
-                        'height':150,
+                        'height':'40%',
 						'backgroundColor': '#1C1C1C',
 						'bar': {
 							'groupWidth': "70%"
