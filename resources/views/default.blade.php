@@ -737,7 +737,7 @@
 							},
 						},
 						'colors' : ['#4CECFF'],
-						'width': 80%,
+						'width': '80%',
 						'height': 500 ,
 						'backgroundColor': '#1C1C1C',
 						'bar': {
