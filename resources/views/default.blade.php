@@ -608,8 +608,8 @@
                     },
                 },
                 'colors' : ['#4CECFF'],
-                'width':'75%',
-                'height':500,
+                'width':'40%',
+                'height':300,
                 'backgroundColor': '#1C1C1C',
                 'bar': {
                     'groupWidth': "70%"
@@ -636,8 +636,8 @@
                 'subtitle':'In the last week',
                 'colors': ['#A7FD91', '#FFF385', '#FA7577'],
                 'backgroundColor': '#1C1C1C',
-                'width':'75%',
-                'height': 500,
+                'width':'40%',
+                'height':300,
                 'legend': 'none',
             };
 
@@ -685,8 +685,8 @@
                     'minValue': 0
                 },
                 'colors' : ['#A7FD91'],
-                'width':'80%',
-                'height': 500,
+                'width':'40%',
+                'height':300,
                 'backgroundColor': '#1C1C1C',
                 'bar': {
                     'groupWidth': "70%"
@@ -737,8 +737,8 @@
 							},
 						},
 						'colors' : ['#4CECFF'],
-						'width': '80%',
-						'height': 500 ,
+						'width':'40%',
+                        'height':300,
 						'backgroundColor': '#1C1C1C',
 						'bar': {
 							'groupWidth': "70%"
