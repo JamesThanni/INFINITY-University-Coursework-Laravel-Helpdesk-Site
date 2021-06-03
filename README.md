@@ -1,3 +1,13 @@
+## INTRO
+Welcome to the Make-It-All Helpdesk developed by Team 23 of Loughborough University for the 2021 Team Projects module. To operate the system a website is needed, so please use the screenshots .pdf file and helpdesk concept design .xd file made in Adobe XD.
+
+## Additional Notes
+- Requirement for the project were to Your group must produce a website to replace the manual system currently used by the company, "Make-It-All" to demonstrate their solution for technical issues to clients.
+- Development from April was completed locally and committed by the project manager only.
+- Development completed by team of four with two front end developers and two back end developers.
+
+## Enjoy!
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
