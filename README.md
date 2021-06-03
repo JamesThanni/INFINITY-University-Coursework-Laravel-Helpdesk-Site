@@ -1,5 +1,5 @@
-## INTRO
-Welcome to the Make-It-All Helpdesk developed by Team 23 of Loughborough University for the 2021 Team Projects module. To operate the system a website is needed, so please use the screenshots .pdf file and helpdesk concept design .xd file made in Adobe XD.
+## Welcome
+This is the Make-It-All Helpdesk Team Project developed by Team 23 of Loughborough University including myself for the 2021 Team Projects module. To operate the system a website is needed, so please use the screenshots .pdf file and helpdesk concept design .xd file made in Adobe XD.
 
 ## Additional Notes
 - Requirement for the project were to Your group must produce a website to replace the manual system currently used by the company, "Make-It-All" to demonstrate their solution for technical issues to clients.
