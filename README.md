@@ -1,7 +1,8 @@
-## Welcome
-This is the Make-It-All Helpdesk Team Project developed by Team 23 of Loughborough University including myself for the 2021 Team Projects module. 
+# INFINITY HELPDESK - Laravel Helpdesk Site
 
-## Additional Notes
+## About this project 
+### Developed in 2019 as a submission for the Make-It-All Helpdesk Team Project developed by Team 23 of Loughborough University including myself for the 2021 Second Year Team Projects module. 
+
 - Requirements for the project were to produce a website to replace the manual system currently used by the company, "Make-It-All" to demonstrate their solution for technical issues to clients.
 - Development from April was completed locally and committed by the project manager only.
 - Development completed by team of four with two front end developers and two back end developers.
